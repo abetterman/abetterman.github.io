@@ -5,12 +5,12 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="https://www.zhangqijie.org/"/>
   <updated>2020-03-28T11:31:14.504Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>https://www.zhangqijie.org/</id>
   
   <author>
-    <name>John Doe</name>
+    <name>Zhang Qijie</name>
     
   </author>
   
@@ -18,8 +18,8 @@
   
   <entry>
     <title>I love Robot</title>
-    <link href="http://yoursite.com/2020/03/28/I-love-Robot/"/>
-    <id>http://yoursite.com/2020/03/28/I-love-Robot/</id>
+    <link href="https://www.zhangqijie.org/2020/03/28/I-love-Robot/"/>
+    <id>https://www.zhangqijie.org/2020/03/28/I-love-Robot/</id>
     <published>2020-03-28T11:29:44.000Z</published>
     <updated>2020-03-28T11:31:14.504Z</updated>
     
@@ -41,8 +41,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="http://yoursite.com/2020/03/28/hello-world/"/>
-    <id>http://yoursite.com/2020/03/28/hello-world/</id>
+    <link href="https://www.zhangqijie.org/2020/03/28/hello-world/"/>
+    <id>https://www.zhangqijie.org/2020/03/28/hello-world/</id>
     <published>2020-03-28T11:02:29.968Z</published>
     <updated>2020-03-28T11:02:29.968Z</updated>
     
