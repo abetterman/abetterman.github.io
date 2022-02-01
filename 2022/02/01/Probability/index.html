@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Zhang Qijie">
+
+
+
+
+
+<title>Probability | Zhang Qijie&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+            <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+        
+    
+
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Zhang Qijie&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Zhang Qijie&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Probability</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Zhang Qijie</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">February 1, 2022&nbsp;&nbsp;10:53:40</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <p><img src="/2022/02/01/Probability/image-20220114110417206.png" alt="image-20220114110417206"></p>
+<h1 id="顽想学概率"><a href="#顽想学概率" class="headerlink" title="顽想学概率"></a>顽想学概率</h1><p>这是我在 Coursera 上修台大叶柄成老师的 ”顽想学概率“ 课程的笔记。</p>
+<p>叶老师的课，重 <em>intuition</em>，不重公式和理论，有趣。</p>
+<h2 id="机率概论"><a href="#机率概论" class="headerlink" title="机率概论"></a>机率概论</h2><h4 id="概率范例"><a href="#概率范例" class="headerlink" title="概率范例"></a>概率范例</h4><ul>
+<li>丢铜板，看到正面的机率为 0.52</li>
+<li>明天下雨的概率为 60%</li>
+<li>丢四颗骰子得到一色的概率为 $1/216$ </li>
+</ul>
+<h4 id="怎么理解概率"><a href="#怎么理解概率" class="headerlink" title="怎么理解概率"></a>怎么理解概率</h4><p>如何理解“明天下雨的概率为 60% ”？</p>
+<p>幸运之轮 (wheel of fortune)      </p>
+<p>​                                                                         <img src="/2022/02/01/Probability/image-20220114112513242.png" alt="image-20220114112513242" style="zoom:50%;"></p>
+<p>​                                                                         （圆周长为一）</p>
+<p>明天下雨的机率 = 𝟎. 𝟔，可以理解为下雨可能性跟幸运之轮 「 𝑿 停在长度为 𝟎. 𝟔的红边上」这件事情发生概率是一样的！</p>
+<h4 id="为何要学习概率"><a href="#为何要学习概率" class="headerlink" title="为何要学习概率"></a>为何要学习概率</h4><ul>
+<li>我们对这个世界的认识太少，未知太多</li>
+<li>世间事，很少必然（deterministic），多是偶然（random）</li>
+</ul>
+<h4 id="概率与统计的差异"><a href="#概率与统计的差异" class="headerlink" title="概率与统计的差异"></a>概率与统计的差异</h4><h6 id="概率："><a href="#概率：" class="headerlink" title="概率："></a>概率：</h6><ul>
+<li>概率模型已知，要学会怎么算某些事件的概率 </li>
+<li>Ex: 已知一骰子为公平骰，看到偶数的概率为何？  </li>
+</ul>
+<h6 id="统计："><a href="#统计：" class="headerlink" title="统计："></a>统计：</h6><ul>
+<li>概率模型未知，要学会怎么从大量的实验结果中去建立概率模型  </li>
+<li>Ex: 不知一骰灌铅否，欲知各点出现之概率模型？  </li>
+</ul>
+<h2 id="集合论"><a href="#集合论" class="headerlink" title="集合论"></a>集合论</h2><h4 id="为何学习集合论"><a href="#为何学习集合论" class="headerlink" title="为何学习集合论"></a>为何学习集合论</h4><p>[学生上课不规矩] 的机率 = 0.1</p>
+<p>即： P(学生上课不规矩) = 0.1，概率函数的自变量是：<strong>事件</strong>，而事件是一种 <strong>集合</strong> （实验结果的集合）</p>
+<h4 id="集合论名词复习"><a href="#集合论名词复习" class="headerlink" title="集合论名词复习"></a>集合论名词复习</h4><ul>
+<li><p>元素 （element）</p>
+<ul>
+<li>Ex: 小黑、小冀、小湘、小鄂、小美  </li>
+</ul>
+</li>
+<li><p>集合（set）</p>
+<ul>
+<li>Ex: 咸豆腐脑党 𝑨 =  {黑, 冀}</li>
+<li>Ex: 甜豆腐脑党 𝑩 =  {湘, 鄂 }</li>
+</ul>
+</li>
+<li><p>子集合（subset）</p>
+<ul>
+<li>Ex: 嫌咸党 𝑪 =  {湘, 鄂, 美 }</li>
+</ul>
+<p>B 是 C 的子集，表示为： $𝑩 ⊂ 𝑪$</p>
+</li>
+<li><p>宇集 （Universal Set）</p>
+<ul>
+<li>Ex: S =  {黑, 冀, 湘, 鄂, 美 }  </li>
+</ul>
+</li>
+<li><p>空集合（Empty Set）</p>
+<ul>
+<li>Ex: 𝝓 =  { }  </li>
+</ul>
+</li>
+<li><p>交集（Intersection）</p>
+<ul>
+<li>Ex: 喜欢甜豆腐脑且咸豆腐脑者 =  𝑨 ∩ 𝑩 = { } = 𝝓  </li>
+</ul>
+</li>
+<li><p>联集（Union）</p>
+<ul>
+<li>Ex: 喜欢甜豆腐脑或咸豆腐脑者 =  𝑨 ∪ 𝑩 = {黑, 冀, 湘, 鄂}  </li>
+</ul>
+</li>
+<li><p>补集（Complement）</p>
+<ul>
+<li>Ex:嫌咸党 𝑪 = 咸党 A 之补集  $𝑪 = 𝑨^c$</li>
+</ul>
+</li>
+<li><p>差集（Difference）$X-Y$ = {有在 X 但不在 Y 中的东西}  </p>
+<ul>
+<li>Ex:嫌咸党- 甜党 =  𝑪 - 𝑩 = {美 }  </li>
+</ul>
+</li>
+<li><p>不相交（Disjoint）：如果 𝑿 ∩ 𝒀 = 𝝓  :arrow_right: X,Y 不相交</p>
+<ul>
+<li>Ex:  甜党 ⋂ 咸党 = { }，亦即甜党、 咸党不相交!  </li>
+</ul>
+</li>
+<li><p>互斥 (Mutually Exclusive) ：若一群集合 $𝑿_𝟏, 𝑿_𝟐, … , 𝑿_𝒏$ 中任选两个集合 $𝑿_𝒊, 𝑿_𝒋$ 都不相交，则我们称 $𝑿_𝟏, 𝑿_𝟐, … , 𝑿_𝒏$ 这群集合互斥  </p>
+<ul>
+<li>Ex:  甜党、咸党、小美党，三者两两不相交，故三者互斥!  </li>
+</ul>
+</li>
+</ul>
+<h4 id="De-Morgan’s-Law"><a href="#De-Morgan’s-Law" class="headerlink" title="De Morgan’s Law"></a>De Morgan’s Law</h4><p>​                                                                    $(𝑨 ∪ 𝑩)^c = A^c ∩ B^c$</p>
+<ul>
+<li><p>Ex: </p>
+<p><img src="/2022/02/01/Probability/image-20220114154620433.png" alt="image-20220114154620433"></p>
+</li>
+</ul>
+<h4 id="De-Morgan’s-Law-证明"><a href="#De-Morgan’s-Law-证明" class="headerlink" title="De Morgan’s Law 证明"></a>De Morgan’s Law 证明</h4><table>
+<thead>
+<tr>
+<th align="left">$-&gt;:$</th>
+<th>$&lt;-:$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Assume   $X ∈ (A ∪ B)^c$</td>
+<td>Assume         $X ∈ A^c ∩ B^c$</td>
+</tr>
+<tr>
+<td align="left">$=&gt;  X ∉ A ∪ B$</td>
+<td>$=&gt; X ∉ A\ and\ X ∉ B$</td>
+</tr>
+<tr>
+<td align="left">$=&gt;  X ∉ A\ and\ X ∉ B$</td>
+<td>If $X ∉ (A ∪ B)^c$</td>
+</tr>
+<tr>
+<td align="left">$=&gt; X ∈ A^c \ and\ X ∈ B^c$</td>
+<td>$=&gt; X ∈ A ∪ B$</td>
+</tr>
+<tr>
+<td align="left">$=&gt; X ∈ A^c ∩ B^c$</td>
+<td>$=&gt; X ∈ A\ or\ X ∈ B\ -&gt;&lt;-$</td>
+</tr>
+<tr>
+<td align="left">$=&gt; (A \cup B)^{C} \subseteq\left(A^{C} \cap B^{C}\right)$</td>
+<td>Thus  $X ∈ (A ∪ B)^c\ =&gt; \left(A^{C} \cap B^{C}\right) \subseteq(A \cup B)^{C}$</td>
+</tr>
+</tbody></table>
+<h2 id="概率名词"><a href="#概率名词" class="headerlink" title="概率名词"></a>概率名词</h2><h4 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h4><ul>
+<li><p>一个机率「实验」包含了：  </p>
+<p>步骤 (procedures)、 模型 (model)、观察(observations)  </p>
+</li>
+<li><p>Ex: 丢两公平骰  </p>
+<ul>
+<li>步骤：「伸手取起桌上二骰，紧握后，手微微开口后向内吹口气。<br>之后默祷，再将骰丢入碗中，直至停止为止。」  </li>
+<li>模型： (1, 1)、 (1, 2) 、 …、 (6, 6) 等发生机会均等  </li>
+<li>观察： (6, 6)  </li>
+</ul>
+</li>
+</ul>
+<h4 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h4><p>「结果」是实验中可能的结果  </p>
+<ul>
+<li><p>Ex: 约心仪店员  </p>
+<p>成功、失败  </p>
+</li>
+<li><p>Ex: 看到华南虎  </p>
+<p>立体的、平面的  </p>
+</li>
+<li><p>Ex: 转幸运之轮  </p>
+<p>𝑿 = 𝟎. 𝟒𝟎𝟎𝟖𝟖𝟐𝟑𝟖𝟐𝟑 … 、 𝑿 = 𝟎. 𝟎𝟖𝟎𝟎𝟎𝟖𝟎𝟎𝟖𝟎 …  </p>
+</li>
+<li><p>样本空间（Sample Space)</p>
+<p>「样本空间」是机率实验所有可能的结果的集合，通常用 <code>𝑺</code> 来表示  </p>
+<ul>
+<li><p>Ex: 约心仪店员</p>
+<p><code>𝑺 = &#123; 成功、失败 &#125;</code>  </p>
+</li>
+<li><p>Ex: 连丢三次铜板，记录正反面结果</p>
+<p><code>𝑺 = &#123; HHH, HHT, HTH, HTT, THH, THT, TTH, TTT &#125;</code>  </p>
+</li>
+<li><p>Ex: 幸运之轮转一次  </p>
+<p><code>𝑺 = [𝟎, 𝟏) </code> </p>
+</li>
+<li><p>Ex: 幸运之轮转两次</p>
+<p><code>𝑺 = [𝟎, 𝟏) × [𝟎, 𝟏) </code> </p>
+</li>
+</ul>
+</li>
+<li><p>事件（Event）</p>
+<ul>
+<li><p>「事件」指的是对于实验结果的某种叙述。  </p>
+</li>
+<li><p>机率就是在讲实验结果符合某事件叙述的机会多大  </p>
+</li>
+<li><p>在数学上，「事件」可以看成是「结果」的集合，亦即是 「样本空间」的子集。  </p>
+<ul>
+<li><p>Ex: 台大生的上课出席状况  </p>
+<ul>
+<li>结果」有哪几种：  <code>S = 准时、迟到、旷课 </code> </li>
+<li>事件1：有出席； <code>E1 = &#123;准时、迟到&#125; </code></li>
+<li>事件2：没规矩； <code>E2 = &#123;迟到、旷课&#125; </code>  </li>
+</ul>
+</li>
+<li><p>Ex: 小明、小华各丢一次公平骰，比点数大小，大者赢</p>
+<ul>
+<li><p>事件1：小明赢； </p>
+<p>E1  = { 𝟐, 𝟏 , 𝟑, 𝟏 , 𝟑, 𝟐 , 𝟒, 𝟏 , 𝟒, 𝟐 , 𝟒, 𝟑 , 𝟓, 𝟏 , 𝟓, 𝟐 , 𝟓, 𝟑 , 𝟓, 𝟒 , 𝟔, 𝟏 , 𝟔, 𝟐 , 𝟔, 𝟑 , 𝟔, 𝟒 , (𝟔, 𝟓)}  </p>
+</li>
+<li><p>事件2：小华赢； </p>
+<p>E2 =  { 𝟏, 𝟐 , 𝟏, 𝟑 , 𝟐, 𝟑 , 𝟏, 𝟒 , 𝟐, 𝟒 , 𝟑, 𝟒 , 𝟏, 𝟓 , 𝟐, 𝟓 , 𝟑, 𝟓 , 𝟒, 𝟓 , 𝟏, 𝟔 , 𝟐, 𝟔 , 𝟑, 𝟔 , 𝟒, 𝟔 , (𝟓, 𝟔)}  </p>
+</li>
+<li><p>事件3：平手； </p>
+<p>E3 =  { 1,1 , 2,2 , 3,3 , 4,4 , 5,5 , 6,6 }  </p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>​                        </p>
+<p>​                        </p>
+<p>​                        </p>
+<p>​                        </p>
+<p>​                        </p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Zhang Qijie</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://www.zhangqijie.org/2022/02/01/Probability/">https://www.zhangqijie.org/2022/02/01/Probability/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2022/01/18/Notes_for_Probability/"></a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Zhang Qijie | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>
