@@ -13,7 +13,7 @@
 
 
 
-<title>Zhang Qijie&#39;s Blog</title>
+<title>Mastering JavaScript 01 | Zhang Qijie&#39;s Blog</title>
 
 
 
@@ -40,6 +40,45 @@
 
     
     
+        
+            <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
         
     
 
@@ -193,7 +232,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title"></h1>
+            <h1 class="post-title">Mastering JavaScript 01</h1>
             
                 <div class="post-meta">
                     
@@ -202,18 +241,24 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">January 18, 2022&nbsp;&nbsp;17:00:13</a>
+                        Date: <a href="#">February 3, 2022&nbsp;&nbsp;13:04:46</a>
                         </span>
                     
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/JavaScript/">JavaScript</a>
+                            
+                        </span>
                     
                 </div>
             
         </header>
 
         <div class="post-content">
-            <p>title: Mastering JavaScript 01<br>date: 2022-02-03 13:04:46<br>tags: javascript<br>categories: JavaScript<br>mathjax: true</p>
-<p>![](Master JavaScript/1643859472(1).png)</p>
-<h1 id="Mastering-JavaScript-01"><a href="#Mastering-JavaScript-01" class="headerlink" title="Mastering JavaScript 01"></a>Mastering JavaScript 01</h1><p>Study notes of a cool Course: “A complete comprehensive Guide to Intermediate JavaScript” on Educative platform.</p>
+            <p><img src="/2022/02/03/JavaScript/1643859472(1).png"></p>
+<h1 id="Mastering-JavaScript-01"><a href="#Mastering-JavaScript-01" class="headerlink" title="Mastering JavaScript 01"></a>Mastering JavaScript 01</h1><p>Study notes of a cool Course: “A complete comprehensive Guide to Intermediate JavaScript” .</p>
 <h2 id="Variable-Scope"><a href="#Variable-Scope" class="headerlink" title="Variable Scope"></a>Variable Scope</h2><h6 id="Global-Scope"><a href="#Global-Scope" class="headerlink" title="Global Scope"></a>Global Scope</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">var</span> y = <span class="string">&#x27;abc&#x27;</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br></pre></td></tr></table></figure>
 
 <p><code>x,y,fn</code> 都是 Global Scope</p>
@@ -247,22 +292,24 @@
 <p>以上 4 组代码，对于 JavaScript 引擎是一样的。最后一组代码更准确表示了我们的代码，倒数第 2 组代码更精简更可读。只是不要写出前面 2 组代码。</p>
 <h2 id="Function-Hoisting"><a href="#Function-Hoisting" class="headerlink" title="Function Hoisting"></a>Function Hoisting</h2><ul>
 <li><p>function express</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fn = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// do something...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fn = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;    <span class="comment">// do something...&#125;</span></span><br></pre></td></tr></table></figure></li>
 <li><p>function declaration</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// do something...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;    <span class="comment">// do something...&#125;</span></span><br></pre></td></tr></table></figure>
 
 <p>函数表达式变量 <code>fn</code> 将如普通变量一样获得提升，并被赋值: <code>undefined</code> ，后面将在预期的位置被设置为函数本身。</p>
 <p>函数声明，将会获得完整地提升，所有变量被移到顶部并立即等于函数，甚至被提升到比普通变量更高的位置。</p>
 </li>
 </ul>
 <p><em>Example:</em></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">fnDeclaration(); <span class="comment">// -&gt; This works!</span></span><br><span class="line">fnExpression(); <span class="comment">// -&gt; Uncaught TypeError: fnExpression is not a function</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fnDeclaration</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;This works!&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> fnExpression = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;This won&#x27;t work :(&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">fnDeclaration(); <span class="comment">// -&gt; This works!</span></span><br><span class="line">fnExpression(); <span class="comment">// -&gt; Uncaught TypeError: fnExpression is not a functionfunction </span></span><br><span class="line"><span class="function"><span class="title">fnDeclaration</span>(<span class="params"></span>)</span> &#123;    </span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;This works!&#x27;</span>);&#125;</span><br><span class="line"><span class="keyword">var</span> fnExpression = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;    </span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;This won&#x27;t work :(&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><em>Full Example</em></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">123</span>;</span><br><span class="line"><span class="keyword">var</span> b = <span class="string">&#x27;abc&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> fnExpression = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> c = <span class="number">456</span>;</span><br><span class="line">    <span class="keyword">var</span> d = <span class="string">&#x27;def&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fnDeclaration</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> e = <span class="number">789</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">123</span>;</span><br><span class="line"><span class="keyword">var</span> b = <span class="string">&#x27;abc&#x27;</span>;</span><br><span class="line"><span class="keyword">var</span> fnExpression = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;    </span><br><span class="line">    <span class="keyword">var</span> c = <span class="number">456</span>;    </span><br><span class="line">    <span class="keyword">var</span> d = <span class="string">&#x27;def&#x27;</span>;&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fnDeclaration</span>(<span class="params"></span>) </span>&#123;    </span><br><span class="line">    <span class="keyword">var</span> e = <span class="number">789</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>The final version of this code that the compiler will run looks more like this.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fnDeclaration</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> e;</span><br><span class="line">  </span><br><span class="line">    e = <span class="number">789</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a;</span><br><span class="line"><span class="keyword">var</span> b;</span><br><span class="line"><span class="keyword">var</span> fnExpression;</span><br><span class="line"></span><br><span class="line">a = <span class="number">123</span>;</span><br><span class="line">b = <span class="string">&#x27;abc&#x27;</span>;</span><br><span class="line"></span><br><span class="line">fnExpression = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> c;</span><br><span class="line">    <span class="keyword">var</span> d;</span><br><span class="line">  </span><br><span class="line">    c = <span class="number">456</span>;</span><br><span class="line">    d = <span class="string">&#x27;def&#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fnDeclaration</span>(<span class="params"></span>) </span>&#123;    </span><br><span class="line">    <span class="keyword">var</span> e;      </span><br><span class="line">    e = <span class="number">789</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a;</span><br><span class="line"><span class="keyword">var</span> b;</span><br><span class="line"><span class="keyword">var</span> fnExpression;</span><br><span class="line">a = <span class="number">123</span>;</span><br><span class="line">b = <span class="string">&#x27;abc&#x27;</span>;</span><br><span class="line">fnExpression = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;    </span><br><span class="line">    <span class="keyword">var</span> c;    </span><br><span class="line">    <span class="keyword">var</span> d;      </span><br><span class="line">    c = <span class="number">456</span>;    </span><br><span class="line">    d = <span class="string">&#x27;def&#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
 
 
 
@@ -292,7 +339,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="https://www.zhangqijie.org/2022/01/18/Master%20JavaScript/">https://www.zhangqijie.org/2022/01/18/Master%20JavaScript/</a></span>
+                        <span><a href="https://www.zhangqijie.org/2022/02/03/JavaScript/">https://www.zhangqijie.org/2022/02/03/JavaScript/</a></span>
                     </p>
                 
                 
@@ -315,6 +362,10 @@
                 <span>Tag(s):</span>
                 <span class="tag">
                     
+                    
+                        <a href="/tags/javascript/"># javascript</a>
+                    
+                        
                 </span>
             </div>
             <div>
@@ -325,10 +376,8 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2022/01/18/Notes_for_Probability/"></a>
             
-            
-            <a class="next" rel="next" href="/2022/01/03/statistics/">statistics</a>
+            <a class="next" rel="next" href="/2022/02/01/Probability/">Probability</a>
             
         </section>
 
