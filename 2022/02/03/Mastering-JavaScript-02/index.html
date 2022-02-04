@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Zhang Qijie">
+
+
+
+
+
+<title>Mastering JavaScript 02 | Zhang Qijie&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+            <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+        
+    
+
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Zhang Qijie&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Zhang Qijie&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Mastering JavaScript 02</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Zhang Qijie</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">February 3, 2022&nbsp;&nbsp;18:24:38</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/JavaScript/">JavaScript</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <p><img src="/2022/02/03/Mastering-JavaScript-02/image-20220203182802504.png" alt="image-20220203182802504"></p>
+<h1 id="Mastering-JavaScript-02"><a href="#Mastering-JavaScript-02" class="headerlink" title="Mastering JavaScript 02"></a>Mastering JavaScript 02</h1><p>Study notes from a cool Course: “A complete comprehensive Guide to Intermediate JavaScript” .</p>
+<h2 id="ES2015-Scope-amp-Hoisting-let-amp-const"><a href="#ES2015-Scope-amp-Hoisting-let-amp-const" class="headerlink" title="ES2015 Scope &amp; Hoisting -let &amp; const"></a>ES2015 Scope &amp; Hoisting -let &amp; const</h2><p>ES2015 介绍了两个声明变量的新方法：<code>let</code> 和 <code>const</code> .</p>
+<h3 id="let"><a href="#let" class="headerlink" title="let"></a><code>let</code></h3><p><code>let</code> 与 <code>var</code> 的不同：</p>
+<ul>
+<li>not hoisted</li>
+<li>block-scoped</li>
+</ul>
+<h4 id="Not-Hoisted"><a href="#Not-Hoisted" class="headerlink" title="Not Hoisted"></a>Not Hoisted</h4><p>如前所述，由 <code>var</code> 声明的变量会获得提升，而由 <code>let</code> 声明的变量却不会获得提升，在声明前引用，会导致引用错误：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(x); <span class="comment">// -&gt; Uncaught ReferenceError: x is not defined</span></span><br><span class="line"><span class="keyword">let</span> x = <span class="number">10</span>;</span><br><span class="line"><span class="built_in">console</span>.log(x);</span><br></pre></td></tr></table></figure>
+
+<p><code>let</code> 声明的变量没有提升，也省了很多麻烦，变得很简单了。</p>
+<h4 id="Block-Scoped"><a href="#Block-Scoped" class="headerlink" title="Block-Scoped"></a>Block-Scoped</h4><p><code>var</code> 是函数作用域的，即只有在一个函数内部，它才是局部作用域的。</p>
+<p>而 <code>let</code> 是块级作用域的，这是 JavaScript 中的一个新的作用域机制，作用域不再限于函数和全局。</p>
+<p>任一对花刮号 <code>&#123;&#125;</code> 都会建立一个新的作用域，在其中用 <code>let</code> 声明的变量只在这个作用域内可用。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="keyword">var</span> x = <span class="number">10</span>;</span><br><span class="line">  <span class="keyword">let</span> y = <span class="number">20</span>;</span><br><span class="line">  </span><br><span class="line">  <span class="built_in">console</span>.log(x); <span class="comment">// -&gt; 10</span></span><br><span class="line">  <span class="built_in">console</span>.log(y); <span class="comment">// -&gt; 20</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(x); <span class="comment">// -&gt; 10</span></span><br><span class="line"><span class="built_in">console</span>.log(y); <span class="comment">// -&gt; Uncaught ReferenceError: y is not defined</span></span><br></pre></td></tr></table></figure>
+
+<p>同样，在循环语句 <code>for</code> 和 <code>while</code> 中，用 <code>let</code> 声明的变量，也只在循环中可用。而 <code>var</code> 声明的变量却在循环之外仍然可用。</p>
+<p>在循环语句中的条件 <code>let</code> 声明的变量，也是块级作用域，只在循环中可用，即使他们不在花刮号内。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; <span class="number">10</span>; j++) &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(i); <span class="comment">// -&gt; 10</span></span><br><span class="line"><span class="built_in">console</span>.log(j); <span class="comment">// -&gt; Uncaught ReferenceError: j is not defined</span></span><br></pre></td></tr></table></figure>
+
+<p>另外，用 <code>let</code> 重复声明一个变量会失败，而用 <code>var</code> 则不会：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">4</span>;</span><br><span class="line"><span class="keyword">var</span> x = <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> y = <span class="number">6</span>;  </span><br><span class="line"><span class="keyword">let</span> y = <span class="number">7</span>; <span class="comment">// -&gt; Uncaught SyntaxError: Identifier &#x27;y&#x27; has already been declared</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="const"><a href="#const" class="headerlink" title="const"></a><code>const</code></h3><h4 id="No-reassignment"><a href="#No-reassignment" class="headerlink" title="No reassignment"></a>No reassignment</h4><p>所有适用于 <code>let</code> 的新规则同样也适用于 <code>const</code>, 此外，还有一些增加的规则：1. 用 <code>const</code> 声明的变量不能被重新赋值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">3</span>;</span><br><span class="line"><span class="keyword">let</span> y = <span class="number">4</span>;</span><br><span class="line"><span class="keyword">const</span> z = <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line">x = <span class="number">30</span>;</span><br><span class="line">y = <span class="number">40</span>;</span><br><span class="line">z = <span class="number">50</span>; <span class="comment">// -&gt; Uncaught TypeError: Assignment to constant variable.</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="No-empty-initializations"><a href="#No-empty-initializations" class="headerlink" title="No empty initializations"></a>No empty initializations</h4><p><code>const</code> 不允许使用空初始化。而使用 <code>var x</code> 或者 <code>let x</code> ，将得到 <code>undefined</code> 值，<code>const x</code> 却会抛出一个错误。它必须在声明时给定一个具体的值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a;</span><br><span class="line"><span class="keyword">let</span> b;</span><br><span class="line"><span class="keyword">const</span> c; <span class="comment">// -&gt; Uncaught SyntaxError: Missing initializer in const declaration</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h3><p>事实是 <code>var</code> 已经过时了，从现在开始，应该使用 <code>let</code> 和 <code>const</code>。</p>
+<h4 id="Which-One"><a href="#Which-One" class="headerlink" title="Which One?"></a>Which One?</h4><h5 id="Preferring-const"><a href="#Preferring-const" class="headerlink" title="Preferring const"></a>Preferring <code>const</code></h5><p>关于 <code>let</code> 和 <code>const</code> 有两种思想流派，首先是尽可能使用 <code>const</code>， 你会发现需要重新赋值的变量比常量少得多。</p>
+<p>努力使用 <code>const</code>，只在必要时回退到 <code>let</code>。</p>
+<h5 id="Preferring-let"><a href="#Preferring-let" class="headerlink" title="Preferring let"></a>Preferring <code>let</code></h5><p>其他人，包括 Kyle Simpson，更喜欢用 <code>let</code> 而不是 <code>const</code>，这个想法是 <code>const</code> 应该为 true 常量、数学常量（比如 PI）保留。</p>
+<p>也许第一种策略更好，无论哪里都尽可能地使用 <code>const</code> ，只在需要重新赋值时降级为 <code>let</code>。</p>
+<h2 id="Introduction-to-Callbacks"><a href="#Introduction-to-Callbacks" class="headerlink" title="Introduction to Callbacks"></a>Introduction to Callbacks</h2><p>JavaScript 最强大的属性之一就是函数是一等对象。这意味着它们与任何其他对象一样，并且具有与标准对象相同的属性。实际上，我们应该将函数视为可调用的对象。</p>
+<p>像一个对象一样，我们可以在函数上存储属性。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line"></span><br><span class="line">fn.property = <span class="string">&#x27;Hello!&#x27;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(fn.property); <span class="comment">// -&gt; Hello!</span></span><br></pre></td></tr></table></figure>
+
+<p>一个对象可用任何类型数据作为属性，函数也是如此，甚至可以将一个函数设为另一个函数的属性：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;Executing fn&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fn.func = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;Executing func&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fn(); <span class="comment">// -&gt; Executing fn</span></span><br><span class="line">fn.func(); <span class="comment">// -&gt; Executing func</span></span><br></pre></td></tr></table></figure>
+
+<p>一个函数被传递给另一个函数作为参数，或者从另一个函数返回，都是完全合法的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fnGenerator</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;Ran the inner function&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> fnReturned = fnGenerator();</span><br><span class="line"><span class="built_in">console</span>.log(fnReturned); <span class="comment">// -&gt; [Function]</span></span><br><span class="line">fnReturned(); <span class="comment">// -&gt; Ran the inner function</span></span><br></pre></td></tr></table></figure>
+
+<p>函数作为参数：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fnCaller</span>(<span class="params">fn</span>) </span>&#123;</span><br><span class="line">    fn();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">log</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;Calling log&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fnCaller(log); <span class="comment">// -&gt; Calling log</span></span><br></pre></td></tr></table></figure>
+
+<p>这就是回调的定义：<strong>回调是一种传递给另一个函数的函数。</strong></p>
+<p>传递函数作为参数和返回函数允许我们：</p>
+<ul>
+<li>消除代码重复</li>
+<li>允许异步执行</li>
+<li>允许事件绑定，比如用户交互</li>
+<li>隐藏数据并创建一个令人愉快的用户界面</li>
+<li>防止作用域污染</li>
+</ul>
+<h2 id="Closures"><a href="#Closures" class="headerlink" title="Closures"></a>Closures</h2><p>闭包允许我们动态创建函数，实现封装，并创建接口以与我们的代码进行交互。</p>
+<h4 id="Dynamically-Generating-Functions"><a href="#Dynamically-Generating-Functions" class="headerlink" title="Dynamically Generating Functions"></a>Dynamically Generating Functions</h4><p>比如我们写一个函数实现任何数与 10 相加：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add10</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> num + <span class="number">10</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>任何数与 20 相加、与 30 相加。。。。。。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add20</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> num + <span class="number">20</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add30</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> num + <span class="number">30</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>显然，这样写下去是愚蠢的。</p>
+<h4 id="Scope-Persistence"><a href="#Scope-Persistence" class="headerlink" title="Scope Persistence"></a>Scope Persistence</h4><p>函数创建时，它会保留对其创建作用域内的访问。如果在另一个函数内创建，即使在该外部函数返回之后，它也会保留对外部函数作用域内的访问。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fnGenerator</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> stringToLog = <span class="string">&#x27;The string I was given is &quot;&#x27;</span> + str + <span class="string">&#x27;&quot;&#x27;</span>;</span><br><span class="line">  </span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(stringToLog);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> fnReturned = fnGenerator(<span class="string">&#x27;Bat-Man&#x27;</span>);</span><br><span class="line">fnReturned(); <span class="comment">// -&gt; The string I was given is &quot;Bat-Man&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>这样，就创建了一个闭包。</p>
+<p>即使 <code>fnGenerator</code> 已经结束了执行，但其作用域仍然保持在内存中，返回的函数 <code>fnReturned</code> 仍然可以访问这个作用域内的变量。这个概念，我们用来解决前面的代码重复的问题。</p>
+<p>MDN 定义：</p>
+<blockquote>
+<p>The combination of a function and the lexical environment within which that function was declared.</p>
+</blockquote>
+<h4 id="The-Solution"><a href="#The-Solution" class="headerlink" title="The Solution"></a>The Solution</h4><p>利用闭包特性，我们可以写出 generator functions 或者 factory functions。</p>
+<p>生成器/工厂函数基于传递给它的参数来创建和返回函数的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addFactory</span>(<span class="params">storedNum</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">num2</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> storedNum + num2;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> add10 = addFactory(<span class="number">10</span>);</span><br><span class="line"><span class="keyword">const</span> add20 = addFactory(<span class="number">20</span>);</span><br><span class="line"><span class="keyword">const</span> add30 = addFactory(<span class="number">30</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(add10(<span class="number">5</span>)); <span class="comment">// -&gt; 15</span></span><br><span class="line"><span class="built_in">console</span>.log(add20(<span class="number">6</span>)); <span class="comment">// -&gt; 26</span></span><br><span class="line"><span class="built_in">console</span>.log(add30(<span class="number">7</span>)); <span class="comment">// -&gt; 37</span></span><br></pre></td></tr></table></figure>
+
+<p><code>add10</code> 保持访问 <code>10</code> 并且与任何传递给它的数值相加。同样， <code>add20</code> 和 <code>add30</code> 分别保持对 <code>20</code> 和 <code>30</code> 的访问。</p>
+<p>如此，就摆脱了代码的重复。</p>
+<h4 id="Encapsulation"><a href="#Encapsulation" class="headerlink" title="Encapsulation"></a>Encapsulation</h4><p>凭借这个作用域持久的想法，我们可以编写向用户隐藏数据的函数，这被称作为封装。如此，我们就可以避免用户无意间修改了数据的值。</p>
+<p>假设我们编写一个函数，可以跟踪它被调用的次数，并且不希望用户可以修改这个值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">counterGenerator</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> counter = <span class="number">1</span>;</span><br><span class="line">  </span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> counter++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> incrementCounter = counterGenerator();</span><br><span class="line"><span class="built_in">console</span>.log(incrementCounter()); <span class="comment">// -&gt; 1</span></span><br><span class="line"><span class="built_in">console</span>.log(incrementCounter()); <span class="comment">// -&gt; 2</span></span><br><span class="line">counter = <span class="number">100</span>; <span class="comment">// &lt;- sets a new global variable &#x27;counter&#x27;;</span></span><br><span class="line">               <span class="comment">// the one inside counterGenerator is unchanged</span></span><br><span class="line"><span class="built_in">console</span>.log(incrementCounter()); <span class="comment">// -&gt; 3</span></span><br></pre></td></tr></table></figure>
+
+<p>用户只能与 <code>incrementCounter</code> 函数交互，<code>counterGenerator</code> 函数被隐藏，与 <code>counter</code> 变量交互的唯一方式是调用<code>incrementCounter</code> 函数。这类似于汽车驾驶员无需关心引擎一样。软件更新，只需更新 code base，而无需更新用户接口，用户的操作方式无需任何更改。这就是封装的好处。</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Zhang Qijie</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://www.zhangqijie.org/2022/02/03/Mastering-JavaScript-02/">https://www.zhangqijie.org/2022/02/03/Mastering-JavaScript-02/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/JavaScript/"># JavaScript</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2022/02/03/JavaScript/">Mastering JavaScript 01</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Zhang Qijie | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>
