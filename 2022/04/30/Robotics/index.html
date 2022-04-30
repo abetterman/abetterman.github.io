@@ -271,16 +271,13 @@
 <p><img src="/2022/04/30/Robotics/image-20220430114530305.png" alt="image-20220430114530305"></p>
 <p>分为固定翼、扑翼和旋翼无人机。固定翼无人机无法悬停。</p>
 <p>旋翼又分为直升机、共轴多旋翼、多旋翼（4/6/8 翼等）</p>
-<p>####为何研究 Quadrotor</p>
-<p><strong>结构简单</strong>：四个电机固定在一个刚体机架上。没有直升机的铰链设计，螺旋桨桨叶相对尺寸短又坚硬，这样在飞行器突然转向时，桨叶不会因为陀螺力矩而桨叶扑动。</p>
+<h4 id="为何研究-Quadrotor"><a href="#为何研究-Quadrotor" class="headerlink" title="为何研究 Quadrotor"></a>为何研究 Quadrotor</h4><p><strong>结构简单</strong>：四个电机固定在一个刚体机架上。没有直升机的铰链设计，螺旋桨桨叶相对尺寸短又坚硬，这样在飞行器突然转向时，桨叶不会因为陀螺力矩而桨叶扑动。</p>
 <p>这使得控制器的设计会简单很多（建模的时候，只考虑刚体的运动即可）。</p>
-<p>####Quadrotor 如何控制位置和姿态</p>
-<p><img src="/2022/04/30/Robotics/image-20220430115310697.png" alt="image-20220430115310697"></p>
+<h4 id="Quadrotor-如何控制位置和姿态"><a href="#Quadrotor-如何控制位置和姿态" class="headerlink" title="Quadrotor 如何控制位置和姿态"></a>Quadrotor 如何控制位置和姿态</h4><p><img src="/2022/04/30/Robotics/image-20220430115310697.png" alt="image-20220430115310697"></p>
 <p>答案是通过电机的转速差值。相邻的电机转向不同：上图的 w1 和 w3  是逆时针旋转，而 w2 和 w4 是顺时针旋转。</p>
 <p>比如滚转和俯仰运动（左右、前后）</p>
 <p><img src="/2022/04/30/Robotics/v2-68c3684d652fdac5973946b3562a203b_1440w.jpg" alt="img"></p>
-<p>#####Motion Basics</p>
-<p>无人机所有的运动，都可归结为三类：Yaw, Roll, Pitch。</p>
+<h5 id="Motion-Basics"><a href="#Motion-Basics" class="headerlink" title="Motion Basics"></a>Motion Basics</h5><p>无人机所有的运动，都可归结为三类：Yaw, Roll, Pitch。</p>
 <h6 id="右手坐标系"><a href="#右手坐标系" class="headerlink" title="右手坐标系"></a>右手坐标系</h6><img src="/2022/04/30/Robotics/Roll-Pitch-Yaw.jpg" alt="roll pitch yaw" style="zoom:80%;">
 
 <blockquote>
