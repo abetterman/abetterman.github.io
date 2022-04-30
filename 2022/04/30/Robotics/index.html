@@ -13,7 +13,7 @@
 
 
 
-<title>Robotics | Zhang Qijie&#39;s Blog</title>
+<title>Aerial Robotics | Zhang Qijie&#39;s Blog</title>
 
 
 
@@ -40,6 +40,45 @@
 
     
     
+        
+            <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
         
     
 
@@ -127,11 +166,73 @@
                 <div class="container">
     
     
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
 
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">Robotics</h1>
+            <h1 class="post-title">Aerial Robotics</h1>
             
                 <div class="post-meta">
                     
@@ -144,12 +245,132 @@
                         </span>
                     
                     
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/robotics/">robotics</a>
+                            
+                        </span>
+                    
                 </div>
             
         </header>
 
         <div class="post-content">
-            
+            <p><img src="/2022/04/30/Robotics/image-20220430111834343.png" alt="image-20220430111834343"></p>
+<h1 id="Aerial-Robotics"><a href="#Aerial-Robotics" class="headerlink" title="Aerial Robotics"></a>Aerial Robotics</h1><p>Penn Engineering 在 Coursera 上的 Robotics Specialization 的第一门课程 Aerial Robotics，专注于 Quadrotor.</p>
+<p>系统讲述了 Quadrotor 的力学原理、设计、控制以及轨迹规划等理论知识。</p>
+<h3 id="第一讲-Intorduction"><a href="#第一讲-Intorduction" class="headerlink" title="第一讲 Intorduction"></a>第一讲 Intorduction</h3><p>介绍了无人机 （UAV）及其分类，阐述了其中一种：四旋翼无人机（Quadrotor）的基础知识以及行业应用。</p>
+<h4 id="无人机-（UAV）的行业价值"><a href="#无人机-（UAV）的行业价值" class="headerlink" title="无人机 （UAV）的行业价值"></a>无人机 （UAV）的行业价值</h4><p>UAV（Unmanned Aerial Vehicle）目前主要应用于军事、民用和 DIY 领域。</p>
+<p>能广泛应用于：农业、摄影、检测、建设施工、边境巡逻和电影制作等；</p>
+<h4 id="UAV-amp-RPV-amp-Drone"><a href="#UAV-amp-RPV-amp-Drone" class="headerlink" title="UAV &amp; RPV &amp; Drone"></a>UAV &amp; RPV &amp; Drone</h4><p>UAVs = RPVs = Aerial Robots = Drones</p>
+<p><img src="/2022/04/30/Robotics/image-20220430113900005.png" alt="image-20220430113900005"></p>
+<h4 id="Micro-Aerial-Vehicles"><a href="#Micro-Aerial-Vehicles" class="headerlink" title="Micro Aerial Vehicles"></a>Micro Aerial Vehicles</h4><p><img src="/2022/04/30/Robotics/image-20220430114223509.png" alt="image-20220430114223509"></p>
+<p>上图左列就是本课程主要研究的微型飞行器：四旋翼无人机 （Quadrotor）。</p>
+<p>####微型无人机的类型</p>
+<p><img src="/2022/04/30/Robotics/image-20220430114530305.png" alt="image-20220430114530305"></p>
+<p>分为固定翼、扑翼和旋翼无人机。固定翼无人机无法悬停。</p>
+<p>旋翼又分为直升机、共轴多旋翼、多旋翼（4/6/8 翼等）</p>
+<p>####为何研究 Quadrotor</p>
+<p><strong>结构简单</strong>：四个电机固定在一个刚体机架上。没有直升机的铰链设计，螺旋桨桨叶相对尺寸短又坚硬，这样在飞行器突然转向时，桨叶不会因为陀螺力矩而桨叶扑动。</p>
+<p>这使得控制器的设计会简单很多（建模的时候，只考虑刚体的运动即可）。</p>
+<p>####Quadrotor 如何控制位置和姿态</p>
+<p><img src="/2022/04/30/Robotics/image-20220430115310697.png" alt="image-20220430115310697"></p>
+<p>答案是通过电机的转速差值。相邻的电机转向不同：上图的 w1 和 w3  是逆时针旋转，而 w2 和 w4 是顺时针旋转。</p>
+<p>比如滚转和俯仰运动（左右、前后）</p>
+<p><img src="/2022/04/30/Robotics/v2-68c3684d652fdac5973946b3562a203b_1440w.jpg" alt="img"></p>
+<p>#####Motion Basics</p>
+<p>无人机所有的运动，都可归结为三类：Yaw, Roll, Pitch。</p>
+<h6 id="右手坐标系"><a href="#右手坐标系" class="headerlink" title="右手坐标系"></a>右手坐标系</h6><img src="/2022/04/30/Robotics/Roll-Pitch-Yaw.jpg" alt="roll pitch yaw" style="zoom:80%;">
+
+<blockquote>
+<p><strong>Roll, pitch, and yaw are rotational forces, or moments, about the X, Y, and Z axes</strong>. </p>
+</blockquote>
+<p><strong>Roll</strong>: A roll moment is a force that attempts to cause a system to rotate about its X axis, from side-to-side. A good example of roll is an airplane banking.</p>
+<p><img src="/2022/04/30/Robotics/180px-Aileron_roll.gif" alt="180px-aileron_roll"></p>
+<p><strong>Pitch</strong>: A pitch moment attempts to cause a system to rotate about its Y axis, from front to back. To envision pitch, think of the nose of an airplane pointing downward or upward.</p>
+<p><img src="/2022/04/30/Robotics/180px-Aileron_pitch.gif" alt="180px-Aileron_pitch"></p>
+<p><strong>Yaw</strong>: Yaw occurs when a force attempts to cause a system to rotate about its Z axis. </p>
+<p><img src="/2022/04/30/Robotics/181px-Aileron_yaw.gif" alt="181px-aileron_yaw"></p>
+<h6 id="Quadrotor-Motion-（with-added-Throttle）"><a href="#Quadrotor-Motion-（with-added-Throttle）" class="headerlink" title="Quadrotor Motion （with added Throttle）"></a>Quadrotor Motion （<strong>with added Throttle</strong>）</h6><p><img src="/2022/04/30/Robotics/DJI-Spark-Main-7-300x180.png" alt="DJI Spark - 主要 7"></p>
+<p><strong>Roll</strong> – 围绕 X 轴旋转（翻滚角），因此它会左右倾斜。</p>
+<p>​            这会导致车辆根据倾斜度向一侧或另一侧移动 - 向左或向右倾斜。</p>
+<p>​            另一种思考方式是将耳朵移向肩膀，使头部向两侧倾斜。</p>
+<p><strong>Pitch</strong> – 围绕 Y 轴旋转 （俯仰角），因此它会从前到后上下倾斜。</p>
+<pre><code>         通过这样做，它会导致车辆根据倾斜的方式向前或向后移动。
+</code></pre>
+<p>​             一个很好的类比是在使用“是”手势时上下点头。</p>
+<p><strong>Yaw</strong> – 围绕 Z 轴旋转（偏航角），这会使 Quadrotor 在与地面保持水平时以顺时针/逆时针方向旋转。</p>
+<pre><code>         这会相应地改变车辆的方向。
+ 
+         同样，这里的类比是在使用“不”手势时摇头。
+</code></pre>
+<p><strong>Throttle –</strong> 在这里我们可以提到油门，虽然它不是像俯仰、滚动和偏航这样的方向性元素，但它确实控制了车辆的高度——让你在空中飞行——当然还有速度。</p>
+<h5 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h5><ol>
+<li><p>如何控制 Yaw 运动</p>
+<p><img src="/2022/04/30/Robotics/v2-280d9c992ec561596e7ed817944a7aae_1440w.jpg" alt="img"></p>
+<p>答案：通过对角线的电机转速差值，比如控制飞行器顺时针旋转，则2、4电机减速，1、3电机加速，即逆时针旋转的电机转速加大。</p>
+</li>
+<li><p>如何完成平移运动</p>
+<p><img src="/2022/04/30/Robotics/v2-c8a322692d53acf750df1dc8c70de32c_1440w.jpg" alt="img"></p>
+<p>答案：平移运动与对应的姿态有关，比如飞行器要往右边飞行，会先产生一个滚转角度，控制飞行器往右加速，当快接近目标位置时，反向产生一个角度刹车，减速，控制飞行器平稳的停在目标位置。所以平移运动涉及到姿态角的变化（ GPS 定点模式飞行）。</p>
+</li>
+<li><p>Quadrotor 的自由度</p>
+<img src="/2022/04/30/Robotics/v2-cc6955117d8746aa535fa4a404142582_1440w.jpg" alt="img" style="zoom: 50%;">
+
+<p>四旋翼飞行器有6 个自由度（3 个平移，3 个旋转），则有多少种不同的方式来平移或旋转机器人？其中有多少个是独立的？</p>
+</li>
+</ol>
+<h4 id="Key-Components-for-Autonomous-Flight"><a href="#Key-Components-for-Autonomous-Flight" class="headerlink" title="Key Components for Autonomous Flight"></a>Key Components for Autonomous Flight</h4><img src="/2022/04/30/Robotics/v2-e87767eabb315fcfc5a8c8c3e6cfbd24_1440w.jpg" alt="img" style="zoom:90%;">
+
+<p><strong>状态估计</strong>：能够估计出飞行器的位置、速度、姿态信息；</p>
+<p><strong>控制</strong>：能够根据目标位置，用状态估计出的数据作为控制反馈，计算出期望动作的电机指令；</p>
+<p><strong>构图</strong>：能够绘制所在环境的地图，如果不知道环境是怎么样的，就不能进行下一步的轨迹规划；</p>
+<p><strong>轨迹规划</strong>：在已知外界环境的情况下，规划出一条安全轨迹，从而能够避开障碍物飞行；</p>
+<h5 id="State-Estimation"><a href="#State-Estimation" class="headerlink" title="State Estimation"></a>State Estimation</h5><p>目的：获得真实的位置、速度、姿态信息。</p>
+<p>手段（传感器）：</p>
+<ol>
+<li><p>运动捕捉系统</p>
+<p><img src="/2022/04/30/Robotics/v2-f41ce2bf3fe8a465a0c7dec663072609_1440w.jpg" alt="img"></p>
+<p>价格昂贵，精度高，实验室设备。</p>
+<p>通过在飞行器上设置 marker 标记，然后通过运动捕捉相机去估计每个 marker 的位置，数据频率能够达到 100-200Hz。</p>
+</li>
+<li><p>GPS</p>
+<p>室外定位标配，数据相对不太精确，而且易受外界干扰，特别是高楼之间。室内情况无法使用。</p>
+<img src="/2022/04/30/Robotics/image-20220430134822645.png" alt="image-20220430134822645" style="zoom:80%;"></li>
+<li><p>How to navigate without GPS or external motion capture cameras?  </p>
+</li>
+</ol>
+<img src="/2022/04/30/Robotics/v2-07b80c52f5970c624b9dc153619993bc_1440w.jpg" alt="img" style="zoom: 58%;">
+
+<p>​                如图所示，颜色加深度相机、激光测距仪等，这些传感器能够估计环境信息，并通过这些信息定位自身位置。</p>
+<h6 id="SLAM-实现原理"><a href="#SLAM-实现原理" class="headerlink" title="SLAM 实现原理"></a>SLAM 实现原理</h6><img src="/2022/04/30/Robotics/v2-543ed96a534a3c5876865c1da08295c0.jpg" alt="img" style="zoom: 67%;">
+
+<p>假设有个机器人，图中蓝色标记，同时假定环境中有三个柱子，橙色标记。假设测量中离三个柱子的距离d1 d2 d3。同时，机器人上还有惯性测量单元，估计出一个周期的运动变化，delta x，到达新位置后，传感器又反馈了新的距离数据。问题是，对于机器人是否可能同时估计柱子的位置（坐标 x,y）与位移 delta x。答案是<strong>可以</strong>。</p>
+<p>这个问题就是<strong>即时定位与地图构建，简称SLAM。简单来说就是在尝试估计出自己的位置变化，同时描述柱子信息。</strong></p>
+<h6 id="几种不同飞行器（不同的传感器组合）"><a href="#几种不同飞行器（不同的传感器组合）" class="headerlink" title="几种不同飞行器（不同的传感器组合）"></a>几种不同飞行器（不同的传感器组合）</h6><img src="/2022/04/30/Robotics/v2-5e802481c86c76ca3106b9d18a334613_1440w.jpg" alt="img" style="zoom: 67%;">
+
+<img src="/2022/04/30/Robotics/v2-27e190fd95d57bdcbabedc90a035aa9f_1440w.jpg" alt="img" style="zoom:67%;">
+
+<p>上图的飞行器，在室内自主定位（只有相机和IMU），需要配合标记。<strong>通过不同的标记组合，能够设置一些飞行动作或是导航，相当于运动捕捉相机的乞丐版</strong>….</p>
+<img src="/2022/04/30/Robotics/v2-55076dee13ed35fa3ca260030e54670d_1440w.jpg" alt="img" style="zoom:67%;">
+
+<p>图中演示的是，飞行器相对于标记进行定位并悬停，它是<strong>估计出自身相对于标记的位置与速度从而达到目的</strong>。</p>
+<h4 id="Application"><a href="#Application" class="headerlink" title="Application"></a>Application</h4><ol>
+<li>Precision Farming</li>
+</ol>
+<img src="/2022/04/30/Robotics/v2-34235bf5a82402aa95b662ecc2fe8f5a_1440w.jpg" alt="img" style="zoom:67%;">
+
+<p>比如图中所示，用飞行器对果园进行巡逻，获取每一颗植物和其果实的三维信息，中间的图用红外成像获得，右下方是用飞行器上的激光传感器和相机获得的三维信息。这些图能够告诉你基本的植物活力信息，让农民获得每一颗植物的生长模型，识别出哪一颗植物需要特别关注，决定给哪些植物浇水，什么时间浇，获得产量的估计。</p>
+<ol start="2">
+<li>Construction  </li>
+</ol>
+<img src="/2022/04/30/Robotics/v2-ec2b524e4cecfdcf7790214101f35117_1440w.jpg" alt="img" style="zoom:67%;">
+
+<p>获得建筑物的三维信息，监控工程进度，配置建筑资源。</p>
+<p>简单来说，就是<strong>飞行器作为一个飞行平台，通过搭载不同的行业传感器就能广泛应用于各个行业中，从而提高生产效率。</strong></p>
+<p>此外，还有在 Archeology, Photography, Robot First Responders 等方面的行业应用。  </p>
+
         </div>
 
         
@@ -186,6 +407,10 @@
                 <span>Tag(s):</span>
                 <span class="tag">
                     
+                    
+                        <a href="/tags/robotics-aerial/"># robotics, aerial</a>
+                    
+                        
                 </span>
             </div>
             <div>
