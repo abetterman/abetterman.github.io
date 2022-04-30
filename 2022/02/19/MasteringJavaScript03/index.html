@@ -13,7 +13,7 @@
 
 
 
-<title>statistics | Zhang Qijie&#39;s Blog</title>
+<title>Mastering JavaScript 03 | Zhang Qijie&#39;s Blog</title>
 
 
 
@@ -40,6 +40,45 @@
 
     
     
+        
+            <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
         
     
 
@@ -127,11 +166,73 @@
                 <div class="container">
     
     
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
 
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">statistics</h1>
+            <h1 class="post-title">Mastering JavaScript 03</h1>
             
                 <div class="post-meta">
                     
@@ -140,16 +241,28 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">January 3, 2022&nbsp;&nbsp;16:45:44</a>
+                        Date: <a href="#">February 19, 2022&nbsp;&nbsp;11:46:40</a>
                         </span>
                     
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/JavaScript/">JavaScript</a>
+                            
+                        </span>
                     
                 </div>
             
         </header>
 
         <div class="post-content">
-            
+            <p><img src="/2022/02/19/MasteringJavaScript03/image-20220219115359225.png" alt="image-20220219115359225"></p>
+<h1 id="Mastering-JavaScript-03"><a href="#Mastering-JavaScript-03" class="headerlink" title="Mastering JavaScript 03"></a>Mastering JavaScript 03</h1><p>Study notes from a cool Course: “A complete comprehensive Guide to Intermediate JavaScript” .</p>
+<h2 id="Value-vs-Reference"><a href="#Value-vs-Reference" class="headerlink" title="Value vs. Reference"></a>Value vs. Reference</h2><p>有些变量是按值复制，而有些是引用复制。</p>
+<p>JavaScript 有 5 个数据类型是按值复制的：<code>Boolean</code>, <code>null</code>, <code>undefined</code>, <code>String</code> and <code>Number</code> ，这些被称为 “Primitive types”</p>
+<p>而另外三种数据类型却是引用复制的：<code>Array</code>, <code>Function</code>，和 <code>Object</code>。这三种数据类型，技术上讲都是 Objects，所以，统称为 <code>Objects</code>。</p>
+<h4 id="Primitives"><a href="#Primitives" class="headerlink" title="Primitives"></a>Primitives</h4>
         </div>
 
         
@@ -163,7 +276,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="https://www.zhangqijie.org/2022/01/03/statistics/">https://www.zhangqijie.org/2022/01/03/statistics/</a></span>
+                        <span><a href="https://www.zhangqijie.org/2022/02/19/MasteringJavaScript03/">https://www.zhangqijie.org/2022/02/19/MasteringJavaScript03/</a></span>
                     </p>
                 
                 
@@ -186,6 +299,10 @@
                 <span>Tag(s):</span>
                 <span class="tag">
                     
+                    
+                        <a href="/tags/JavaScript/"># JavaScript</a>
+                    
+                        
                 </span>
             </div>
             <div>
@@ -196,8 +313,10 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2022/01/18/Master%20JavaScript/"></a>
+                <a class="prev" rel="prev" href="/2022/03/26/Node-js/">Automating with Node.js</a>
             
+            
+            <a class="next" rel="next" href="/2022/02/03/Mastering-JavaScript-02/">Mastering JavaScript 02</a>
             
         </section>
 
