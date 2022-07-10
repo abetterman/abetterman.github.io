@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Zhang Qijie">
+
+
+
+
+
+<title>Multivariable Calculus | Vectors | Zhang Qijie&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+            <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+        
+    
+
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Zhang Qijie&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Zhang Qijie&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Multivariable Calculus | Vectors</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Zhang Qijie</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">July 10, 2022&nbsp;&nbsp;14:18:01</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/mit-calculus-math/">mit, calculus,math</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <hr>
+<p><img src="/2022/07/10/mit-18-02-section1/ec3b11a9e61917ff610aaf38a3b3a08f_18-02s06-16574363392025.jpg" alt="img"></p>
+<p>这是我<strong>重修数学</strong>计划的第二门课程：MIT 18.02 多变量微积分的学习笔记。</p>
+<p>本课程涵盖向量和多变量微积分，包括向量和矩阵、偏导数、二重和三重积分，以及 2 /3 维空间中的向量微积分。</p>
+<h2 id="Vectors"><a href="#Vectors" class="headerlink" title="Vectors"></a>Vectors</h2><p>一个向量 (notation:  $\vec{A}$ ) 具有方向和长度  ( $|\vec{A}|$ ).   </p>
+<p>关于向量，一个重要的观点是：我们可以几何的 (Geometric) 和代数的 (Algebraic) 两种不同的方式来看向量。</p>
+<h3 id="Geometric-View"><a href="#Geometric-View" class="headerlink" title="Geometric View"></a>Geometric View</h3><p>向量具有大小 (magnitude) 和方向 (direction)，两个具有相同的大小和方向的向量被认为是同一个向量。</p>
+<img src="/2022/07/10/mit-18-02-section1/image-20220710153857350.png" alt="image-20220710153857350" style="zoom:40%;">
+
+<p>向量 $\overrightarrow{\mathbf{P Q}}$,  P 称为向量的 tail， Q 称为向量的 head</p>
+<img src="/2022/07/10/mit-18-02-section1/image-20220710155504272.png" alt="image-20220710155504272" style="zoom:33%;">
+
+<p>向量 A 的大小 (magnitude) 表示为：$|\vec{A}|$，向量的大小即向量的长度。</p>
+<h4 id="Scaling-adding-and-subtracting-vectors"><a href="#Scaling-adding-and-subtracting-vectors" class="headerlink" title="Scaling, adding and subtracting vectors"></a>Scaling, adding and subtracting vectors</h4><p>缩放矢量意味着通过比例因子改变其长度。例如：</p>
+<img src="/2022/07/10/mit-18-02-section1/image-20220710160054485.png" alt="image-20220710160054485" style="zoom:33%;">
+
+<p>向量相加即两个向量的头尾 (head to tail) 相连：$A+B$ 或者 $B + A$</p>
+<img src="/2022/07/10/mit-18-02-section1/image-20220710160334278.png" alt="image-20220710160334278" style="zoom:67%;">
+
+<p>将向量想象为位移 (displacements) 是很有用的，则 $A + B$ 可以想象为 位移 A，然后再位移 B。</p>
+<p>向量相减即两个向量尾尾相连 (tail to tail)，$A - B$ 即 $A + (-B)$</p>
+<img src="/2022/07/10/mit-18-02-section1/image-20220710161257802.png" alt="image-20220710161257802" style="zoom:67%;">
+
+<p>同理，$A - B$ 可以想象为从 B 的 head 位移到 A 的 head</p>
+<h3 id="Algebraic-View"><a href="#Algebraic-View" class="headerlink" title="Algebraic View"></a>Algebraic View</h3><p>在 $xy-plane$ 中， 向量 $A$ 可分解为 $A = a_1i + a_2j$， $i$ 为 $x$ 轴上的分量，$j$ 为 $y$ 轴上的分量， $a_1,a_2$ 是 scalars。</p>
+<h4 id="Vector-algebra-using-Coordinates"><a href="#Vector-algebra-using-Coordinates" class="headerlink" title="Vector algebra using Coordinates"></a>Vector algebra using Coordinates</h4><p>向量 $A= a_1i + a_2j$ ，向量 $B= b_1i  + b_2j$ </p>
+<p>$A$ 的大小： $|\mathbf{A}|=\sqrt{a_{1}^{2}+a_{2}^{2}}$ </p>
+<p>相加 $A + B = (a_1 + b_1)i + (a_2 + b_2)j$</p>
+<p>相减 $A - B = (a_1 - b_1)i + (a_2 - b_2)j$</p>
+<p>无论是 2 维的平面，还是 3 维的空间，向量的代数运算规则都是一样的。</p>
+<p>比如： $A = a_1i + a_2j + a_3k$ ，$B = b_1i + b_2j + b_3k$ </p>
+<p>$|\mathbf{A}|=\sqrt{a_{1}^{2}+a_{2}^{2}+a_{3}^2}$ </p>
+<p>相加 $A + B = (a_1 + b_1)i + (a_2 + b_2)j + (a_3 + b_3)k$</p>
+<p>相减 $A - B = (a_1 - b_1)i + (a_2 - b_2)j + (a_3 - b_3)k$</p>
+<h4 id="Unit-Vectors"><a href="#Unit-Vectors" class="headerlink" title="Unit Vectors"></a>Unit Vectors</h4><p>单位向量，即任何具有单位长度的向量。表示为 $\hat u$ </p>
+<p>$x,y,z$ 三个轴的单位向量：$i, j, k$</p>
+<p>任何向量都可以 rescale 成单位向量，如：</p>
+<p>求与向量 $&lt;3, 4&gt;$ 平行的单位向量：</p>
+<p>$|&lt;3, 4&gt;| = 5$，所以 $\frac{1} {5} &lt;3, 4&gt;$ ，即 $&lt;\frac {3} {5}, \frac {4} {5}&gt;$ 是平行于 $&lt;3, 4&gt;$ 的单位向量。</p>
+<p>即 向量 $a = λb$, 则 向量 $a, b$ 平行。</p>
+<h3 id="Vector-Problems"><a href="#Vector-Problems" class="headerlink" title="Vector Problems"></a>Vector Problems</h3><ol>
+<li><p> 一条河流以每小时 3 英里的速度流动，而划船者以每小时 6 英里的速度流动。 划船者应该采取什么方向直接过河？</p>
+</li>
+<li><p> 如果河流以每小时 6 英里的速度流动，而划船者以每小时 3 英里的速度流动，请回答相同的问题。</p>
+</li>
+</ol>
+   <img src="/2022/07/10/mit-18-02-section1/image-20220710173231816.png" alt="image-20220710173231816" style="zoom:67%;">
+
+<p>   第一个问题，即是求上图中的角 $\theta$ ，net velocity 是向量 1：小船速度与向量 2：河流速度的相加；小船的过河方向为垂直于河流。所以：</p>
+<p>   ​                                                                     $\sin (\theta)=\frac{3}{6} \Rightarrow \theta=30^{\circ}=\pi / 6$ </p>
+<p>   第二个问题， </p>
+<p>   ​                                                                     $\sin (\theta)=\frac{6}{3}$，显然是不可能的（$\sin (\theta) \leq 1$）</p>
+<ol start="3">
+<li> 求向量 $&lt;2, 3&gt;$ 平行的单位向量</li>
+</ol>
+<p>   ​                                                                       $\widehat{\mathbf{u}}=\frac{\langle 2,3\rangle}{\sqrt{13}}=\left\langle\frac{2}{\sqrt{13}}, \frac{3}{\sqrt{13}}\right\rangle$</p>
+<ol start="4">
+<li> 用向量证明平行四边形的对角线相互平分</li>
+</ol>
+   <img src="/2022/07/10/mit-18-02-section1/image-20220710174835213.png" alt="image-20220710174835213" style="zoom:67%;">
+
+<p>   这个问题即是求线段 AC 的中点与线段 BD 的中点是同一个点。</p>
+<p>   设 $M_1$ 是 AC 的中点，$M_2$ 是 BD 的中点。证明 $M_1 = M_2$ ，即证明  $\overrightarrow{\mathbf{A M}_1}=\overrightarrow{\mathbf{A M}_2}$ </p>
+<p>   很明显， $\overrightarrow{\mathbf{A M}_{1}}=\frac{1}{2} \overrightarrow{\mathbf{A C}}$ ，同时， $ABCD$ 是平行四边形，由此，我们得到：</p>
+<p>   ​                               $\overrightarrow{\mathbf{A B}}=\overrightarrow{\mathbf{D C}} \Rightarrow \overrightarrow{\mathbf{A B}}=\frac{1}{2} \overrightarrow{\mathbf{A B}}+\frac{1}{2} \overrightarrow{\mathbf{A B}}=\frac{1}{2} \overrightarrow{\mathbf{A B}}+\frac{1}{2} \overrightarrow{\mathbf{D C}}$ </p>
+<p>   利用 $A,B,C,D$ 改写 $AM_{2}$ :</p>
+<p>   $\overrightarrow{\mathbf{A M}_{2}}=\overrightarrow{\mathbf{A B}}+\frac{1}{2} \overrightarrow{\mathbf{B D}}=\frac{1}{2} \overrightarrow{\mathbf{A B}}+\frac{1}{2} \overrightarrow{\mathbf{D C}}+\frac{1}{2} \overrightarrow{\mathbf{B D}}=\frac{1}{2}(\overrightarrow{\mathbf{A B}}+\overrightarrow{\mathbf{B D}}+\overrightarrow{\mathbf{D C}})=\frac{1}{2} \overrightarrow{\mathbf{A C}}$</p>
+<p>   以上，已经证明 $\overrightarrow{\mathbf{A M}_1} = \overrightarrow{\mathbf{A M}_2}$ </p>
+<ol start="5">
+<li><p>用向量法证明空间四边形的中点形成一个平行四边形</p>
+<p>此四边形的四条边分别用 $A B C D$ 表示，则有 $A + B = C + D$，如图所示：</p>
+<img src="/2022/07/10/mit-18-02-section1/image-20220710182448749.png" alt="image-20220710182448749" style="zoom:67%;">
+
+<p>上图中，向量 $\overrightarrow{\mathbf{A C}} = \frac {1}{2} C - \frac {1}{2} A$ ，同理， $\overrightarrow{\mathbf{B D}} = \frac {1}{2} B - \frac {1} {2} D$</p>
+<p>需要证明 $\overrightarrow{\mathbf{A C}} = \overrightarrow{\mathbf{B D}}$</p>
+<p>因为 $A + B = C + D$，所以， $C - A = B - D \Rightarrow \frac {1}{2}(C-A)= \frac {1}{2}(B-D)$，即 $\overrightarrow{\mathbf{A C}} = \overrightarrow{\mathbf{B D}}$</p>
+</li>
+<li><p>Find $A + B + C$</p>
+<img src="/2022/07/10/mit-18-02-section1/image-20220710183932138.png" alt="image-20220710183932138" style="zoom:67%;">
+
+<p>向量就是位移 (displacements)，$A + B + C$ 即是跟随 A 的净位移，然后位移到 B，然后位移到 C。</p>
+<img src="/2022/07/10/mit-18-02-section1/image-20220710184301127.png" alt="image-20220710184301127" style="zoom:67%;"></li>
+<li><p> 三角形的中线是一个顶点到对边中点的向量。证明三角形的中位线之和 $= 0$</p>
+</li>
+</ol>
+   <img src="/2022/07/10/mit-18-02-section1/image-20220710185250919.png" alt="image-20220710185250919" style="zoom:50%;">
+
+<p>   即证明  $\overrightarrow{\mathbf{C P}} + \overrightarrow{\mathbf{ B Q}} + \overrightarrow{\mathbf{A R}} = 0$</p>
+<p>   $P = \frac {1}{2} (A + B) \Rightarrow \overrightarrow{\mathbf{C P}} = \frac {1}{2} (A + B) - C$ </p>
+<p>   同理，$\overrightarrow{\mathbf{B Q}} = \frac {1}{2} (A + C) - B$，$\overrightarrow{\mathbf{A R}} = \frac {1}{2} (B + C) - A$</p>
+<p>   $\overrightarrow{\mathbf{C P}} + \overrightarrow{\mathbf{ B Q}} + \overrightarrow{\mathbf{A R}} = (\frac {1}{2} (A + B) - C) + (\frac {1}{2} (A + C) - B) + (\frac {1}{2} (B + C) - A) = 0$</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Zhang Qijie</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://www.zhangqijie.org/2022/07/10/mit-18-02-section1/">https://www.zhangqijie.org/2022/07/10/mit-18-02-section1/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/mit-calculus-math/"># mit,calculus,math</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2022/05/01/Design/">Aerial Robotics Lecture 2</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Zhang Qijie | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Zhang Qijie">
+
+
+
+
+
+<title>Aerial Robotics Lecture 2 | Zhang Qijie&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+            <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+        
+    
+
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Zhang Qijie&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Zhang Qijie&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Aerial Robotics Lecture 2</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Zhang Qijie</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">May 1, 2022&nbsp;&nbsp;10:20:21</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/robotics/">robotics</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <img src="/2022/05/01/Design/image-20220501103250040.png" alt="image-20220501103250040" style="zoom: 80%;">
+
+<h1 id="Aerial-Robotics-Lecture-2"><a href="#Aerial-Robotics-Lecture-2" class="headerlink" title="Aerial Robotics Lecture 2"></a>Aerial Robotics Lecture 2</h1><p>Penn Engineering 在 Coursera 上的 Robotics Specialization 的第一门课程 Aerial Robotics，专注于 Quadrotor.</p>
+<p>系统讲述了 Quadrotor 的力学原理、设计、控制以及轨迹规划等理论知识。</p>
+<h3 id="第二讲-Energetics-and-System-Design"><a href="#第二讲-Energetics-and-System-Design" class="headerlink" title="第二讲 Energetics and System Design"></a>第二讲 Energetics and System Design</h3><p>这讲主要描述了 Quadrotor 的空气动力学原理，如何实现很好地控制，在设计 Quadrotor 时要考虑哪些因素，组件的选择，另外还讨论了无人机的机动性和敏捷性，最后介绍了无人机的尺寸大小对飞行性能的影响。</p>
+<img src="/2022/05/01/Design/v2-d7304116c8925bf44a2de90ba238da0c_1440w.jpg" alt="img" style="zoom:80%;">
+
+
+
+<h4 id="Basic-Mechanics"><a href="#Basic-Mechanics" class="headerlink" title="Basic Mechanics"></a>Basic Mechanics</h4><p>Quadrotor 四个电机呈十字形排列, 驱动四片桨旋转产生向上的推力。四个电机轴距几何中心的距离相等，当对角两个轴产生的升力相同时能够保证力矩的平衡，四轴不会向任何一个方向倾转。而四个电机一对正转，一对反转的方式使得绕竖直轴方向旋转的反扭矩平衡，保证了四轴航向的稳定。</p>
+<p>各个旋翼对机身所施加的反扭矩与旋翼的旋转方向相反，因此当电机 w1 和电机 w3 逆时针旋转的同时，电机 w2 和电机 w4 顺时针旋转，可以平衡旋翼对机身的反扭矩。</p>
+<img src="/2022/05/01/Design/v2-24018c1631e3df9eec9c5239dfeeb581_1440w.jpg" alt="img" style="zoom:80%;">
+
+<p>根据用户自定义的机头的位置不同，四轴飞行器可以分为 <code>x</code> 模式和 <code>+</code> 模式。</p>
+<p><code>x</code> 模式的机头方向位于两个电机之间，而 <code>+</code> 模式的机头方向位于某一个电机上。<code>x</code> 和 <code>+</code> 就是表示正对机头方向时飞行器的形状。</p>
+<p>如下图所示。<code>x </code> 模式要难飞一点，但动作更灵活。<code>+</code> 模式要好飞一点，动作灵活差一点，所以适合初学者。</p>
+<p>特别注意，<code>x</code> 模式和 <code>+</code> 模式的飞控安装是不同的。如果飞控板安装错误，会剧烈的晃动，根本无法飞。</p>
+<p><img src="/2022/05/01/Design/model-16513762507937.jpg" alt="四轴飞行器的空气动力原理 - 图1"></p>
+<h5 id="空气动力学原理"><a href="#空气动力学原理" class="headerlink" title="空气动力学原理"></a>空气动力学原理</h5><p>Quadrotor 在空间共有 6 个自由度（上升、下降、前进、后退、左移、右移，分别沿 3 个坐标轴作平移和旋转动作），这 6 个自由度的控制都可以通过调节不同电机的转速来实现。基本运动状态分别是：</p>
+<ul>
+<li>垂直运动；</li>
+<li>俯仰运动；</li>
+<li>滚转运动；</li>
+<li>偏航运动；</li>
+<li>前后运动；</li>
+<li>侧向运动。</li>
+</ul>
+<p>在下列图中，电机 w1 和电机 w3 作逆时针旋转，电机 w2 和电机 w4 作顺时针旋转，规定沿 X 轴正方向运动称为向前运动，箭头在旋翼的运动平面上方表示此电机转速提高，在下方表示此电机转速下降。</p>
+<h6 id="垂直运动"><a href="#垂直运动" class="headerlink" title="垂直运动"></a>垂直运动</h6><p>垂直运动相对来说比较容易。<br>在图（a）中，因有两对电机转向相反，可以平衡其对机身的反扭矩，当同时增加四个电机的输出功率，旋翼转速增加使得总的拉力增大，当总拉力足以克服整机的重量时，四旋翼飞行器便离地垂直上升；<br>反之，同时减小四个电机的输出功率，四旋翼飞行器则垂直下降，直至平衡落地，实现了沿 Z 轴的垂直运动。<br>当外界扰动量为零时，在旋翼产生的升力等于飞行器的自重时，飞行器便保持悬停状态。<br>保证四个旋翼转速同步增加或减小是垂直运动的关键。</p>
+<p><img src="/2022/05/01/Design/aerodynamic-1.png" alt="四轴飞行器的空气动力原理 - 图2"></p>
+<h6 id="俯仰运动"><a href="#俯仰运动" class="headerlink" title="俯仰运动"></a>俯仰运动</h6><p>在图（b）中，<code>电机 1</code> 的转速上升，<code>电机 3</code> 的转速下降，<code>电机 2</code>、<code>电机 4</code> 的转速保持不变。为了不因为旋翼转速的改变引起四旋翼飞行器整体扭矩及总拉力改变，<code>旋翼 1</code> 与<code>旋翼 3</code> 转速该变量的大小应相等。<br>由于<code>旋翼 1</code> 的升力上升，<code>旋翼 3</code> 的升力下降，产生的不平衡力矩使机身绕 Y 轴旋转（方向如图所示），<br>同理，当<code>电机 1</code> 的转速下降，<code>电机 3</code> 的转速上升，机身便绕 Y 轴向另一个方向旋转，实现飞行器的俯仰运动。</p>
+<h6 id="翻转运动"><a href="#翻转运动" class="headerlink" title="翻转运动"></a>翻转运动</h6><p>与图（b）的原理相同，在图（c）中，改变<code>电机 2</code> 和<code>电机 4</code> 的转速，保持<code>电机 1</code> 和<code>电机 3</code>的转速不变，则可使机身绕 X 轴旋转（正向和反向），实现飞行器的滚转运动。</p>
+<h6 id="偏航运动"><a href="#偏航运动" class="headerlink" title="偏航运动"></a>偏航运动</h6><p>四旋翼飞行器偏航运动可以借助旋翼产生的反扭矩来实现。<br>旋翼转动过程中由于空气阻力作用会形成与转动方向相反的反扭矩，为了克服反扭矩影响，可使四个旋翼中的两个正转，两个反转，且对角线上的各个旋翼转动方向相同。</p>
+<p>反扭矩的大小与旋翼转速有关，当四个电机转速相同时，四个旋翼产生的反扭矩相互平衡，四旋翼飞行器不发生转动；<br>当四个电机转速不完全相同时，不平衡的反扭矩会引起四旋翼飞行器转动。<br>在图（d）中，当<code>电机 1</code>和<code>电机 3</code>的转速上升，<code>电机 2</code>和<code>电机 4</code>的转速下降时，<code>旋翼 1</code>和<code>旋翼 3</code> 对机身的反扭矩大于<code>旋翼 2</code> 和<code>旋翼 4</code>对机身的反扭矩，机身便在富余反扭矩的作用下绕 Z 轴转动，实现飞行器的偏航运动，转向与 <code>电机 1</code>、<code>电机 3</code> 的转向相反。</p>
+<p><img src="/2022/05/01/Design/aerodynamic-2.png" alt="四轴飞行器的空气动力原理 - 图3"></p>
+<h6 id="前后运动"><a href="#前后运动" class="headerlink" title="前后运动"></a>前后运动</h6><p>要想实现飞行器在水平面内前后、左右的运动，必须在水平面内对飞行器施加一定的力。<br>在图（e）中，增加<code>电机 3</code> 转速，使拉力增大，相应减小<code>电机 1</code> 转速，使拉力减小，同时保持其它两个电机转速不变，反扭矩仍然要保持平衡。<br>按图（b）的理论，飞行器首先发生一定程度的倾斜，从而使旋翼拉力产生水平分量，因此可以实现飞行器的前飞运动。向后飞行与向前飞行正好相反。当然在图（b）图（c）中，飞行器在产生俯仰、翻滚运动的同时也会产生沿  X，Y 轴的水平运动。</p>
+<p><img src="/2022/05/01/Design/aerodynamic-3.png" alt="四轴飞行器的空气动力原理 - 图4"></p>
+<h6 id="侧向运动"><a href="#侧向运动" class="headerlink" title="侧向运动"></a>侧向运动</h6><p>在图（f）中，由于结构对称，所以倾向飞行的工作原理与前后运动完全一样。</p>
+<p>综上所述，四旋翼无人机各个飞行状态的控制是<strong>通过控制对称的四个旋翼的转速，形成相应不同的运动组合</strong>实现的。</p>
+<h4 id="Supplementary"><a href="#Supplementary" class="headerlink" title="Supplementary:"></a>Supplementary:</h4><ol>
+<li>欧拉第一运动定律：从某惯性参考系观测，施加于刚体的合外力，等于刚体质量与质心加速度的乘积。</li>
+</ol>
+<p>​                                                            公式： $F^{(ext)} = ma_{cm}$</p>
+<p>​                其中，$F^{(ext)}$ 是刚体受到的合外力，$m$ 是刚体的质量，$a_{cm}$ 是刚体质心的加速度。</p>
+<p>​                欧拉第一运动定律，也可以表示为：</p>
+<p>​                                                            公式： $F^{(ext)} = \frac{d p}{d t}$</p>
+<p>​                其中， $p$ 是动量， $t$ 是时间。</p>
+<ol start="2">
+<li><p>欧拉第二运动定律： 设定某惯性参考系的固定点O（例如，原点）为参考点，施加于刚体的净外力矩，等于角动量的时间变化率。</p>
+<p>​                                            公式： $M_{O}^{(e x t)}=\frac{d L_{O}}{d t}$</p>
+<p>其中， $M_{O}^{ext}$ 是对于点 O 的合外力矩，$L_O$  是对于点 O 的角动量。</p>
+</li>
+</ol>
+<h5 id="坐标系"><a href="#坐标系" class="headerlink" title="坐标系"></a>坐标系</h5><p>两个坐标系，即惯性坐标系（静坐标系）——<strong>地面坐标系</strong>，以及非惯性坐标系（动坐标系）——<strong>机体坐标系</strong>。<br>两个坐标系都遵循右手法则。</p>
+<img src="/2022/05/01/Design/v2-4f79af897849986165ca01b40ce02199_1440w.jpg" alt="img" style="zoom:80%;">
+
+<p><strong>地面坐标系</strong>：原点为飞行器起始点， 轴 $O_eZ_e$ 铅锤向下，轴 $O_eX_e$ 方向为起飞前飞行器机头方向，轴 $O_eY_e$ 方向为起飞前飞行器机头右侧方向。</p>
+<p><strong>机体坐标系</strong>：取飞行器重心位置为坐标原点，其与四旋翼飞行器固连，轴 $O_bX_b$ 方向为飞行器机头方向。</p>
+<p><img src="/2022/05/01/Design/v2-06d932cb76e7440e7c533df301ce44d0_1440w.jpg" alt="img"></p>
+<p>$\psi$  — 绕 Z 轴旋转的偏航角（angle of yaw)</p>
+<p>$\theta$  — 绕 Y 轴旋转的俯仰角（angle of pitch)</p>
+<p>$\phi$ — 绕 X 轴旋转的滚转角（angle of roll)</p>
+<h5 id="基本力学原理图"><a href="#基本力学原理图" class="headerlink" title="基本力学原理图"></a>基本力学原理图</h5><p>四旋翼的基本力学分析图，如下：</p>
+<img src="/2022/05/01/Design/v2-e525497a8b589ab8c788650a5f50a1a4_1440w.jpg" alt="img" style="zoom:80%;">
+
+<p>每个 rotor（旋翼？）产生的<strong>推力（Thrust）</strong>与转速成二次关系（approximately quadratic），即</p>
+<p>​                                                                                    公式：  $F = k_Fw^2$</p>
+<p>rotor 旋转时，需要克服<strong>阻力矩（Drag moment）</strong>，阻力矩与转速也近似成二次关系，即</p>
+<p>​                                                                                    公式：  $M = k_Mw^2$</p>
+<p>四旋翼的受力分析如图所示，对于四旋翼来说，当处于悬停状态时，每个 rotor 都需要克服 $\frac1 4$ 的重力。通过推力与转速的关系曲线，我们就可以确定产生这些力所需的转速 $w_0$。</p>
+<img src="/2022/05/01/Design/image-20220504093926475.png" alt="image-20220504093926475" style="zoom:80%;">
+
+<p>合力为四个 rotor 的推力和自身的重力，合力矩为 rotor 施加的力矩和对应的阻力矩。</p>
+<img src="/2022/05/01/Design/image-20220504094050217.png" alt="image-20220504094050217" style="zoom:80%;">
+$$
+F_i = k_Fw_i^2 \\
+                                        M_i = k_Mw_i^2 \\
+                    Resultant Force:    F = F_1 + F_2 + F_3 + F_4 - mga_3 \\
+                    Resultant Moment:   M = r_1 \times F_1 + r_2 \times F_2 + r_3 \times F_3 + r_4 \times F_4 + M_1 + M_2 + M_3 + M_4 \\
+$$
+当处于平衡状态时（悬停），合力和合力矩均为 0。而当合力不为 0 时，就产生了加速度。因此，推力和重力决定了无人机的运动方式。
+
+<img src="/2022/05/01/Design/image-20220504094457737.png" alt="image-20220504094457737" style="zoom:80%;">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Zhang Qijie</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://www.zhangqijie.org/2022/05/01/Design/">https://www.zhangqijie.org/2022/05/01/Design/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/energetics-robotics/"># energetics, robotics</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2022/07/10/mit-18-02-section1/">Multivariable Calculus | Vectors</a>
+            
+            
+            <a class="next" rel="next" href="/2022/04/30/Robotics/">Aerial Robotics</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Zhang Qijie | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>
