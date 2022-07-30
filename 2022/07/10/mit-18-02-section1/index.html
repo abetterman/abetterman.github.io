@@ -264,22 +264,17 @@
 <h2 id="Vectors"><a href="#Vectors" class="headerlink" title="Vectors"></a>Vectors</h2><p>一个向量 (notation:  $\vec{A}$ ) 具有方向和长度  ( $|\vec{A}|$ ).   </p>
 <p>关于向量，一个重要的观点是：我们可以几何的 (Geometric) 和代数的 (Algebraic) 两种不同的方式来看向量。</p>
 <h3 id="Geometric-View"><a href="#Geometric-View" class="headerlink" title="Geometric View"></a>Geometric View</h3><p>向量具有大小 (magnitude) 和方向 (direction)，两个具有相同的大小和方向的向量被认为是同一个向量。</p>
-<img src="/2022/07/10/mit-18-02-section1/image-20220710153857350.png" alt="image-20220710153857350" style="zoom:40%;">
-
+<p><img src="/2022/07/10/mit-18-02-section1/image-20220710153857350.png" alt="image-20220710153857350" style="zoom:40%;"></p>
 <p>向量 $\overrightarrow{\mathbf{P Q}}$,  P 称为向量的 tail， Q 称为向量的 head</p>
-<img src="/2022/07/10/mit-18-02-section1/image-20220710155504272.png" alt="image-20220710155504272" style="zoom:33%;">
-
+<p><img src="/2022/07/10/mit-18-02-section1/image-20220710155504272.png" alt="image-20220710155504272" style="zoom:33%;"></p>
 <p>向量 A 的大小 (magnitude) 表示为：$|\vec{A}|$，向量的大小即向量的长度。</p>
 <h4 id="Scaling-adding-and-subtracting-vectors"><a href="#Scaling-adding-and-subtracting-vectors" class="headerlink" title="Scaling, adding and subtracting vectors"></a>Scaling, adding and subtracting vectors</h4><p>缩放矢量意味着通过比例因子改变其长度。例如：</p>
-<img src="/2022/07/10/mit-18-02-section1/image-20220710160054485.png" alt="image-20220710160054485" style="zoom:33%;">
-
+<p><img src="/2022/07/10/mit-18-02-section1/image-20220710160054485.png" alt="image-20220710160054485" style="zoom:33%;"></p>
 <p>向量相加即两个向量的头尾 (head to tail) 相连：$A+B$ 或者 $B + A$</p>
-<img src="/2022/07/10/mit-18-02-section1/image-20220710160334278.png" alt="image-20220710160334278" style="zoom:67%;">
-
+<p><img src="/2022/07/10/mit-18-02-section1/image-20220710160334278.png" alt="image-20220710160334278" style="zoom:67%;"></p>
 <p>将向量想象为位移 (displacements) 是很有用的，则 $A + B$ 可以想象为 位移 A，然后再位移 B。</p>
 <p>向量相减即两个向量尾尾相连 (tail to tail)，$A - B$ 即 $A + (-B)$</p>
-<img src="/2022/07/10/mit-18-02-section1/image-20220710161257802.png" alt="image-20220710161257802" style="zoom:67%;">
-
+<p><img src="/2022/07/10/mit-18-02-section1/image-20220710161257802.png" alt="image-20220710161257802" style="zoom:67%;"></p>
 <p>同理，$A - B$ 可以想象为从 B 的 head 位移到 A 的 head</p>
 <h3 id="Algebraic-View"><a href="#Algebraic-View" class="headerlink" title="Algebraic View"></a>Algebraic View</h3><p>在 $xy-plane$ 中， 向量 $A$ 可分解为 $A = a_1i + a_2j$， $i$ 为 $x$ 轴上的分量，$j$ 为 $y$ 轴上的分量， $a_1,a_2$ 是 scalars。</p>
 <h4 id="Vector-algebra-using-Coordinates"><a href="#Vector-algebra-using-Coordinates" class="headerlink" title="Vector algebra using Coordinates"></a>Vector algebra using Coordinates</h4><p>向量 $A= a_1i + a_2j$ ，向量 $B= b_1i  + b_2j$ </p>
@@ -294,63 +289,54 @@
 <h4 id="Unit-Vectors"><a href="#Unit-Vectors" class="headerlink" title="Unit Vectors"></a>Unit Vectors</h4><p>单位向量，即任何具有单位长度的向量。表示为 $\hat u$ </p>
 <p>$x,y,z$ 三个轴的单位向量：$i, j, k$</p>
 <p>任何向量都可以 rescale 成单位向量，如：</p>
-<p>求与向量 $&lt;3, 4&gt;$ 平行的单位向量：</p>
-<p>$|&lt;3, 4&gt;| = 5$，所以 $\frac{1} {5} &lt;3, 4&gt;$ ，即 $&lt;\frac {3} {5}, \frac {4} {5}&gt;$ 是平行于 $&lt;3, 4&gt;$ 的单位向量。</p>
+<p>求与向量 $<3, 4>$ 平行的单位向量：</3,></p>
+<p>$|<3, 4>| = 5$，所以 $\frac{1} {5} <3, 4>$ ，即 $&lt;\frac {3} {5}, \frac {4} {5}&gt;$ 是平行于 $<3, 4>$ 的单位向量。</3,></3,></3,></p>
 <p>即 向量 $a = λb$, 则 向量 $a, b$ 平行。</p>
 <h3 id="Vector-Problems"><a href="#Vector-Problems" class="headerlink" title="Vector Problems"></a>Vector Problems</h3><ol>
-<li><p>  一条河流以每小时 3 英里的速度流动，而划船者以每小时 6 英里的速度流动。 划船者应该采取什么方向直接过河？</p>
+<li><p>一条河流以每小时 3 英里的速度流动，而划船者以每小时 6 英里的速度流动。 划船者应该采取什么方向直接过河？</p>
 </li>
-<li><p>  如果河流以每小时 6 英里的速度流动，而划船者以每小时 3 英里的速度流动，请回答相同的问题。</p>
+<li><p>如果河流以每小时 6 英里的速度流动，而划船者以每小时 3 英里的速度流动，请回答相同的问题。</p>
+<p><img src="/2022/07/10/mit-18-02-section1/image-20220710173231816.png" alt="image-20220710173231816" style="zoom:67%;"></p>
+<p>第一个问题，即是求上图中的角 $\theta$ ，net velocity 是向量 1：小船速度与向量 2：河流速度的相加；小船的过河方向为垂直于河流。所以：</p>
+<p>​                                                                     $\sin (\theta)=\frac{3}{6} \Rightarrow \theta=30^{\circ}=\pi / 6$ </p>
+<p>第二个问题， </p>
+<p>​                                                                     $\sin (\theta)=\frac{6}{3}$，显然是不可能的（$\sin (\theta) \leq 1$）</p>
+</li>
+<li><p>求向量 $<2, 3>$ 平行的单位向量</2,></p>
+<p>​                                                                       $\widehat{\mathbf{u}}=\frac{\langle 2,3\rangle}{\sqrt{13}}=\left\langle\frac{2}{\sqrt{13}}, \frac{3}{\sqrt{13}}\right\rangle$</p>
 </li>
 </ol>
-   <img src="/2022/07/10/mit-18-02-section1/image-20220710173231816.png" alt="image-20220710173231816" style="zoom:67%;">
-
-<p>   第一个问题，即是求上图中的角 $\theta$ ，net velocity 是向量 1：小船速度与向量 2：河流速度的相加；小船的过河方向为垂直于河流。所以：</p>
-<p>   ​                                                                     $\sin (\theta)=\frac{3}{6} \Rightarrow \theta=30^{\circ}=\pi / 6$ </p>
-<p>   第二个问题， </p>
-<p>   ​                                                                     $\sin (\theta)=\frac{6}{3}$，显然是不可能的（$\sin (\theta) \leq 1$）</p>
-<ol start="3">
-<li>  求向量 $&lt;2, 3&gt;$ 平行的单位向量</li>
+<ol>
+<li><p>用向量证明平行四边形的对角线相互平分</p>
+<p><img src="/2022/07/10/mit-18-02-section1/image-20220710174835213.png" alt="image-20220710174835213" style="zoom:67%;"></p>
+<p>这个问题即是求线段 AC 的中点与线段 BD 的中点是同一个点。</p>
+<p>设 $M_1$ 是 AC 的中点，$M_2$ 是 BD 的中点。证明 $M_1 = M_2$ ，即证明  $\overrightarrow{\mathbf{A M}_1}=\overrightarrow{\mathbf{A M}_2}$ </p>
+<p>很明显， $\overrightarrow{\mathbf{A M}_{1}}=\frac{1}{2} \overrightarrow{\mathbf{A C}}$ ，同时， $ABCD$ 是平行四边形，由此，我们得到：</p>
+<p>​                               $\overrightarrow{\mathbf{A B}}=\overrightarrow{\mathbf{D C}} \Rightarrow \overrightarrow{\mathbf{A B}}=\frac{1}{2} \overrightarrow{\mathbf{A B}}+\frac{1}{2} \overrightarrow{\mathbf{A B}}=\frac{1}{2} \overrightarrow{\mathbf{A B}}+\frac{1}{2} \overrightarrow{\mathbf{D C}}$ </p>
+<p>利用 $A,B,C,D$ 改写 $AM_{2}$ :</p>
+<p>$\overrightarrow{\mathbf{A M}_{2}}=\overrightarrow{\mathbf{A B}}+\frac{1}{2} \overrightarrow{\mathbf{B D}}=\frac{1}{2} \overrightarrow{\mathbf{A B}}+\frac{1}{2} \overrightarrow{\mathbf{D C}}+\frac{1}{2} \overrightarrow{\mathbf{B D}}=\frac{1}{2}(\overrightarrow{\mathbf{A B}}+\overrightarrow{\mathbf{B D}}+\overrightarrow{\mathbf{D C}})=\frac{1}{2} \overrightarrow{\mathbf{A C}}$</p>
+<p>以上，已经证明 $\overrightarrow{\mathbf{A M}_1} = \overrightarrow{\mathbf{A M}_2}$ </p>
+</li>
+<li><p>用向量法证明空间四边形的中点形成一个平行四边形</p>
+<p>此四边形的四条边分别用 $A B C D$ 表示，则有 $A + B = C + D$，如图所示：</p>
+<p><img src="/2022/07/10/mit-18-02-section1/image-20220710182448749.png" alt="image-20220710182448749" style="zoom:67%;"></p>
+<p>上图中，向量 $\overrightarrow{\mathbf{A C}} = \frac {1}{2} C - \frac {1}{2} A$ ，同理， $\overrightarrow{\mathbf{B D}} = \frac {1}{2} B - \frac {1} {2} D$</p>
+<p>需要证明 $\overrightarrow{\mathbf{A C}} = \overrightarrow{\mathbf{B D}}$</p>
+<p>因为 $A + B = C + D$，所以， $C - A = B - D \Rightarrow \frac {1}{2}(C-A)= \frac {1}{2}(B-D)$，即 $\overrightarrow{\mathbf{A C}} = \overrightarrow{\mathbf{B D}}$</p>
+</li>
+<li><p>Find $A + B + C$</p>
+<p><img src="/2022/07/10/mit-18-02-section1/image-20220710183932138.png" alt="image-20220710183932138" style="zoom:67%;"></p>
+<p>向量就是位移 (displacements)，$A + B + C$ 即是跟随 A 的净位移，然后位移到 B，然后位移到 C。</p>
+<p><img src="/2022/07/10/mit-18-02-section1/image-20220710184301127.png" alt="image-20220710184301127" style="zoom:67%;"></p>
+</li>
+<li><p>三角形的中线是一个顶点到对边中点的向量。证明三角形的中位线之和 $= 0$</p>
+<p><img src="/2022/07/10/mit-18-02-section1/image-20220710185250919.png" alt="image-20220710185250919" style="zoom:50%;"></p>
+<p>即证明  $\overrightarrow{\mathbf{C P}} + \overrightarrow{\mathbf{ B Q}} + \overrightarrow{\mathbf{A R}} = 0$</p>
+<p>$P = \frac {1}{2} (A + B) \Rightarrow \overrightarrow{\mathbf{C P}} = \frac {1}{2} (A + B) - C$ </p>
+<p>同理，$\overrightarrow{\mathbf{B Q}} = \frac {1}{2} (A + C) - B$，$\overrightarrow{\mathbf{A R}} = \frac {1}{2} (B + C) - A$</p>
+<p>$\overrightarrow{\mathbf{C P}} + \overrightarrow{\mathbf{ B Q}} + \overrightarrow{\mathbf{A R}} = (\frac {1}{2} (A + B) - C) + (\frac {1}{2} (A + C) - B) + (\frac {1}{2} (B + C) - A) = 0$</p>
+</li>
 </ol>
-<p>   ​                                                                       $\widehat{\mathbf{u}}=\frac{\langle 2,3\rangle}{\sqrt{13}}=\left\langle\frac{2}{\sqrt{13}}, \frac{3}{\sqrt{13}}\right\rangle$</p>
-<ol start="4">
-<li>  用向量证明平行四边形的对角线相互平分</li>
-</ol>
-   <img src="/2022/07/10/mit-18-02-section1/image-20220710174835213.png" alt="image-20220710174835213" style="zoom:67%;">
-
-<p>   这个问题即是求线段 AC 的中点与线段 BD 的中点是同一个点。</p>
-<p>   设 $M_1$ 是 AC 的中点，$M_2$ 是 BD 的中点。证明 $M_1 = M_2$ ，即证明  $\overrightarrow{\mathbf{A M}_1}=\overrightarrow{\mathbf{A M}_2}$ </p>
-<p>   很明显， $\overrightarrow{\mathbf{A M}_{1}}=\frac{1}{2} \overrightarrow{\mathbf{A C}}$ ，同时， $ABCD$ 是平行四边形，由此，我们得到：</p>
-<p>   ​                               $\overrightarrow{\mathbf{A B}}=\overrightarrow{\mathbf{D C}} \Rightarrow \overrightarrow{\mathbf{A B}}=\frac{1}{2} \overrightarrow{\mathbf{A B}}+\frac{1}{2} \overrightarrow{\mathbf{A B}}=\frac{1}{2} \overrightarrow{\mathbf{A B}}+\frac{1}{2} \overrightarrow{\mathbf{D C}}$ </p>
-<p>   利用 $A,B,C,D$ 改写 $AM_{2}$ :</p>
-<p>   $\overrightarrow{\mathbf{A M}_{2}}=\overrightarrow{\mathbf{A B}}+\frac{1}{2} \overrightarrow{\mathbf{B D}}=\frac{1}{2} \overrightarrow{\mathbf{A B}}+\frac{1}{2} \overrightarrow{\mathbf{D C}}+\frac{1}{2} \overrightarrow{\mathbf{B D}}=\frac{1}{2}(\overrightarrow{\mathbf{A B}}+\overrightarrow{\mathbf{B D}}+\overrightarrow{\mathbf{D C}})=\frac{1}{2} \overrightarrow{\mathbf{A C}}$</p>
-<p>   以上，已经证明 $\overrightarrow{\mathbf{A M}_1} = \overrightarrow{\mathbf{A M}_2}$ </p>
-<ol start="5">
-<li> 用向量法证明空间四边形的中点形成一个平行四边形</li>
-</ol>
-<p>   此四边形的四条边分别用 $A B C D$ 表示，则有 $A + B = C + D$，如图所示：</p>
-   <img src="/2022/07/10/mit-18-02-section1/image-20220710182448749.png" alt="image-20220710182448749" style="zoom:67%;">
-
-<p>   上图中，向量 $\overrightarrow{\mathbf{A C}} = \frac {1}{2} C - \frac {1}{2} A$ ，同理， $\overrightarrow{\mathbf{B D}} = \frac {1}{2} B - \frac {1} {2} D$</p>
-<p>   需要证明 $\overrightarrow{\mathbf{A C}} = \overrightarrow{\mathbf{B D}}$</p>
-<p>   因为 $A + B = C + D$，所以， $C - A = B - D \Rightarrow \frac {1}{2}(C-A)= \frac {1}{2}(B-D)$，即 $\overrightarrow{\mathbf{A C}} = \overrightarrow{\mathbf{B D}}$</p>
-<ol start="6">
-<li> Find $A + B + C$</li>
-</ol>
-   <img src="/2022/07/10/mit-18-02-section1/image-20220710183932138.png" alt="image-20220710183932138" style="zoom:67%;">
-
-<p>   向量就是位移 (displacements)，$A + B + C$ 即是跟随 A 的净位移，然后位移到 B，然后位移到 C。</p>
-   <img src="/2022/07/10/mit-18-02-section1/image-20220710184301127.png" alt="image-20220710184301127" style="zoom:67%;">
-
-<ol start="7">
-<li>  三角形的中线是一个顶点到对边中点的向量。证明三角形的中位线之和 $= 0$</li>
-</ol>
-   <img src="/2022/07/10/mit-18-02-section1/image-20220710185250919.png" alt="image-20220710185250919" style="zoom:50%;">
-
-<p>   即证明  $\overrightarrow{\mathbf{C P}} + \overrightarrow{\mathbf{ B Q}} + \overrightarrow{\mathbf{A R}} = 0$</p>
-<p>   $P = \frac {1}{2} (A + B) \Rightarrow \overrightarrow{\mathbf{C P}} = \frac {1}{2} (A + B) - C$ </p>
-<p>   同理，$\overrightarrow{\mathbf{B Q}} = \frac {1}{2} (A + C) - B$，$\overrightarrow{\mathbf{A R}} = \frac {1}{2} (B + C) - A$</p>
-<p>   $\overrightarrow{\mathbf{C P}} + \overrightarrow{\mathbf{ B Q}} + \overrightarrow{\mathbf{A R}} = (\frac {1}{2} (A + B) - C) + (\frac {1}{2} (A + C) - B) + (\frac {1}{2} (B + C) - A) = 0$</p>
 <h2 id="Dot-Product"><a href="#Dot-Product" class="headerlink" title="Dot Product"></a>Dot Product</h2><p>向量的点积，定义：$\vec A \cdot \vec B = a_1b_1 + a_2b_2 + a_3b_3$  (Scalar, not a vector)</p>
 <p>定理：点积的几何意义： </p>
 <p>​                                                                               $\vec A \cdot \vec B = |\vec A||\vec B|cos\theta$</p>
@@ -360,101 +346,110 @@
 <p>得到： $|\vec C|^2 = \vec C \cdot \vec C = (\vec A - \vec B)(\vec A - \vec B) = |\vec A|^2 + |\vec B|^2 - 2 \vec A \cdot \vec B$</p>
 <p>可见，点积定理是余弦定理的向量版本。</p>
 <h3 id="Applications"><a href="#Applications" class="headerlink" title="Applications"></a>Applications</h3><ol>
-<li> 计算向量的长度和角度： $cos\theta = \frac {\vec A \cdot \vec B}{|\vec A||\vec B|}$</li>
+<li><p>计算向量的长度和角度： $cos\theta = \frac {\vec A \cdot \vec B}{|\vec A||\vec B|}$</p>
+<p>Example: triangle in space with vertices P = (1, 0, 0), Q = (0, 1, 0), R = (0, 0, 2), find angle at P:</p>
+<p>​                                    $\cos \theta=\frac{\overrightarrow{P Q} \cdot \overrightarrow{P R}}{|\overrightarrow{P Q}||\overrightarrow{P R}|}=\frac{\langle-1,1,0\rangle \cdot\langle-1,0,2\rangle}{\sqrt{2} \sqrt{5}}=\frac{1}{\sqrt{10}}, \quad \theta \approx 71.5^{\circ}$</p>
+<p>注：点积的结果为正，则表示角度小于 $90^0$，结果为负，则角度大于 $90^0$ ，结果为 $0$，角度为 $90^0$</p>
+</li>
 </ol>
-<p>   Example: triangle in space with vertices P = (1, 0, 0), Q = (0, 1, 0), R = (0, 0, 2), find angle at P:</p>
-<p>   ​                                    $\cos \theta=\frac{\overrightarrow{P Q} \cdot \overrightarrow{P R}}{|\overrightarrow{P Q}||\overrightarrow{P R}|}=\frac{\langle-1,1,0\rangle \cdot\langle-1,0,2\rangle}{\sqrt{2} \sqrt{5}}=\frac{1}{\sqrt{10}}, \quad \theta \approx 71.5^{\circ}$</p>
-<p>   注：点积的结果为正，则表示角度小于 $90^0$，结果为负，则角度大于 $90^0$ ，结果为 $0$，角度为 $90^0$</p>
-<ol start="2">
-<li> 检测正交性 (orthogonality)</li>
+<ol>
+<li><p>检测正交性 (orthogonality)</p>
+<p>Example: what is the set of points where $x+2y +3z = 0$ ? </p>
+<p>geometrically answer: </p>
+<p>令 $A = <1,2,3>$，$P=<x,y,z>$ ，</x,y,z></1,2,3></p>
+<p>​                则 $\vec A \cdot \overrightarrow {OP} = x + 2y + 3z = 0 \Leftrightarrow |\vec A||\overrightarrow {OP}|cos\theta = 0 \Leftrightarrow \theta=\frac \pi 2 \Leftrightarrow \vec A \perp \overrightarrow {OP}$</p>
+<p>因此，我们得到一个平面，法向量 (normal vector) $\vec A$ 穿过其原点 $O$ 与其垂直. </p>
+</li>
 </ol>
-<p>   Example: what is the set of points where $x+2y +3z = 0$ ? </p>
-<p>   geometrically answer: </p>
-<p>   令 $A = &lt;1,2,3&gt;$，$P=&lt;x,y,z&gt;$ ，</p>
-<p>   ​                则 $\vec A \cdot \overrightarrow {OP} = x + 2y + 3z = 0 \Leftrightarrow |\vec A||\overrightarrow {OP}|cos\theta = 0 \Leftrightarrow \theta=\frac \pi 2 \Leftrightarrow \vec A \perp \overrightarrow {OP}$</p>
-<p>   因此，我们得到一个平面，法向量 (normal vector) $\vec A$ 穿过其原点 $O$ 与其垂直. </p>
-<ol start="3">
-<li> 求向量的分量</li>
+<ol>
+<li><p>求向量的分量</p>
+<p>$\hat u$ 为单位向量 (unit vector)，  即向量 $\vec A$ 在 $\hat u$ 方向的分量，也就是向量 $\vec A$ 在 $\hat u$ 上的投影，即下图的紫色部分： $|\vec A|cos\theta = |\vec A||\hat u|cos\theta = \vec A \cdot \hat u $</p>
+<p><img src="/2022/07/10/mit-18-02-section1/image-20220714104031744.png" alt="image-20220714104031744" style="zoom:67%;"></p>
+<p>$\vec A \cdot \hat i$ 即向量 $\vec A$ 在 $x$ 轴方向上的分量， $\vec A \cdot \hat j$ 即向量 $\vec A$ 在 $y$ 轴上的分量， $\vec A \cdot \hat k$ 即向量 $\vec A$ 在 $z$ 轴上的分量。</p>
+</li>
 </ol>
-<p>   $\hat u$ 为单位向量 (unit vector)，  即向量 $\vec A$ 在 $\hat u$ 方向的分量，也就是向量 $\vec A$ 在 $\hat u$ 上的投影，即下图的紫色部分： $|\vec A|cos\theta = |\vec A||\hat u|cos\theta = \vec A \cdot \hat u $</p>
-   <img src="/2022/07/10/mit-18-02-section1/image-20220714104031744.png" alt="image-20220714104031744" style="zoom:67%;">
-
-<p>   $\vec A \cdot \hat i$ 即向量 $\vec A$ 在 $x$ 轴方向上的分量， $\vec A \cdot \hat j$ 即向量 $\vec A$ 在 $y$ 轴上的分量， $\vec A \cdot \hat k$ 即向量 $\vec A$ 在 $z$ 轴上的分量。</p>
 <p>   Example:</p>
 <p>   如图所示有一个单摆，摆线末端有一定质量的物体，该物体围绕圆弧来回摆动，为了分析这个机械运动，需要对其进行受力分析：其有一个竖直向下的重力以及一个沿着摆线的拉力。这两个力的合力解释了摆来回摆动的原因。</p>
 <p>   为了更好的分析摆的运动过程，我们找到与摆线摆动轨迹相切的向量 $\vec T$  以及垂直于轨迹的向量 $\vec N$。然后我们能够看到 $F_1$ 沿切线方向的分量是单摆沿切线方向加速的原因，其使摆来回摆动；而沿 $\vec N$  的分量是因为摆线上有拉力。</p>
-   <img src="/2022/07/10/mit-18-02-section1/v2-7a78a5656f91352981376287233addc2_720w.jpg" alt="img" style="zoom:97%;">
-
-<ol start="4">
-<li> 求图形的面积</li>
+<p>   <img src="/2022/07/10/mit-18-02-section1/v2-7a78a5656f91352981376287233addc2_720w.jpg" alt="img" style="zoom:97%;"></p>
+<ol>
+<li><p>求图形的面积</p>
+<p>假如有如下图所示的五边形，可以将五边形分割为三个三角形，通过计算三个三角形的面积之和来得到五边形的面积。假设平面当中有一个三角形，其相邻两边可用 $\vec A$ , $\vec B$  描述，那么该三角形的面积为： </p>
+<p>​                                                                $Area =\frac 1 2 |\vec A||\vec B|sin\theta$</p>
+<p><img src="/2022/07/10/mit-18-02-section1/v2-241f4d6d9f004d4b5fb4a4a2c70a18f7_720w.jpg" alt="img"></p>
+<p>$sin\theta$ 可通过 $(sin\theta)^2 + (cos\theta)^2 = 1$ 求得。</p>
+</li>
+<li><p>证明平行四边形的对角线垂直当且仅当它是菱形，即它的四个边的长度相等</p>
+<p><img src="/2022/07/10/mit-18-02-section1/image-20220723151829810.png" alt="image-20220723151829810" style="zoom:50%;"></p>
+<p>​    设此平行四边形的相邻两边分别为 $\vec A, \vec B$ ，于是，两条对角线分别为：$\vec A + \vec B$ 和 $\vec A - \vec B$ </p>
+<p>​    $(\vec A  + \vec B) \cdot (\vec A - \vec B) = \vec A \cdot \vec A - \vec B \cdot \vec B$，因此，$(\vec A  + \vec B) \cdot (\vec A - \vec B) = 0 \Leftrightarrow \vec A \cdot \vec A = \vec B \cdot \vec B$</p>
+</li>
+<li><p>证明一个平行四边形的两条对角线长度相等，当且仅当它是矩形。</p>
+<p><img src="/2022/07/10/mit-18-02-section1/image-20220723154333239.png" alt="image-20220723154333239" style="zoom:67%;"></p>
+<p>​    如图，$ABCD$ 是一个平行四边形，即 $\overrightarrow {AB} = \overrightarrow {DC}$ </p>
+<p>​                                                    $\overrightarrow {AC} = \overrightarrow {AB} + \overrightarrow {BC}$ ，$\overrightarrow {BD} = \overrightarrow {BC} + \overrightarrow {CD} = \overrightarrow {BC} - \overrightarrow {AB}$</p>
+<p>​                    $|\overrightarrow{\mathbf{A C}}|^{2}=\overrightarrow{\mathbf{A C}} \cdot \overrightarrow{\mathbf{A C}}=(\overrightarrow{\mathbf{A B}}+\overrightarrow{\mathbf{B C}}) \cdot(\overrightarrow{\mathbf{A B}}+\overrightarrow{\mathbf{B C}})=|\overrightarrow{\mathbf{A B}}|^{2}+2 \overrightarrow{\mathbf{A B}} \cdot \overrightarrow{\mathbf{B C}}+|\overrightarrow{\mathbf{B C}}|^{2}$</p>
+<p>​        and     $|\overrightarrow{\mathbf{B D}}|^{2}=\overrightarrow{\mathbf{B D}} \cdot \overrightarrow{\mathbf{B D}}=(\overrightarrow{\mathbf{B C}}-\overrightarrow{\mathbf{A B}}) \cdot(\overrightarrow{\mathbf{B C}}-\overrightarrow{\mathbf{A B}})=|\overrightarrow{\mathbf{B C}}|^{2}-2 \overrightarrow{\mathbf{A B}} \cdot \overrightarrow{\mathbf{B C}}+|\overrightarrow{\mathbf{A B}}|^{2}$            </p>
+<p>​                     so, 若 $\overrightarrow {AC} = \overrightarrow {BD}$，则  $\overrightarrow {AB} \cdot \overrightarrow {BC} = 0$ </p>
+</li>
 </ol>
-<p>   假如有如下图所示的五边形，可以将五边形分割为三个三角形，通过计算三个三角形的面积之和来得到五边形的面积。假设平面当中有一个三角形，其相邻两边可用 $\vec A$ , $\vec B$  描述，那么该三角形的面积为： </p>
-<p>   ​                                                                $Area =\frac 1 2 |\vec A||\vec B|sin\theta$</p>
-<p>   <img src="/2022/07/10/mit-18-02-section1/v2-241f4d6d9f004d4b5fb4a4a2c70a18f7_720w.jpg" alt="img"></p>
-<p>   $sin\theta$ 可通过 $(sin\theta)^2 + (cos\theta)^2 = 1$ 求得。</p>
-<ol start="5">
-<li> 证明平行四边形的对角线垂直当且仅当它是菱形，即它的四个边的长度相等</li>
-</ol>
-   <img src="/2022/07/10/mit-18-02-section1/image-20220723151829810.png" alt="image-20220723151829810" style="zoom:50%;">
-
-<p>   ​    设此平行四边形的相邻两边分别为 $\vec A, \vec B$ ，于是，两条对角线分别为：$\vec A + \vec B$ 和 $\vec A - \vec B$ </p>
-<p>   ​    $(\vec A  + \vec B) \cdot (\vec A - \vec B) = \vec A \cdot \vec A - \vec B \cdot \vec B$，因此，$(\vec A  + \vec B) \cdot (\vec A - \vec B) = 0 \Leftrightarrow \vec A \cdot \vec A = \vec B \cdot \vec B$</p>
-<ol start="6">
-<li> 证明一个平行四边形的两条对角线长度相等，当且仅当它是矩形。</li>
-</ol>
-   <img src="/2022/07/10/mit-18-02-section1/image-20220723154333239.png" alt="image-20220723154333239" style="zoom:67%;">
-
-<p>   ​    如图，$ABCD$ 是一个平行四边形，即 $\overrightarrow {AB} = \overrightarrow {DC}$ </p>
-<p>   ​                                                    $\overrightarrow {AC} = \overrightarrow {AB} + \overrightarrow {BC}$ ，$\overrightarrow {BD} = \overrightarrow {BC} + \overrightarrow {CD} = \overrightarrow {BC} - \overrightarrow {AB}$</p>
-<p>   ​                    $|\overrightarrow{\mathbf{A C}}|^{2}=\overrightarrow{\mathbf{A C}} \cdot \overrightarrow{\mathbf{A C}}=(\overrightarrow{\mathbf{A B}}+\overrightarrow{\mathbf{B C}}) \cdot(\overrightarrow{\mathbf{A B}}+\overrightarrow{\mathbf{B C}})=|\overrightarrow{\mathbf{A B}}|^{2}+2 \overrightarrow{\mathbf{A B}} \cdot \overrightarrow{\mathbf{B C}}+|\overrightarrow{\mathbf{B C}}|^{2}$</p>
-<p>   ​        and     $|\overrightarrow{\mathbf{B D}}|^{2}=\overrightarrow{\mathbf{B D}} \cdot \overrightarrow{\mathbf{B D}}=(\overrightarrow{\mathbf{B C}}-\overrightarrow{\mathbf{A B}}) \cdot(\overrightarrow{\mathbf{B C}}-\overrightarrow{\mathbf{A B}})=|\overrightarrow{\mathbf{B C}}|^{2}-2 \overrightarrow{\mathbf{A B}} \cdot \overrightarrow{\mathbf{B C}}+|\overrightarrow{\mathbf{A B}}|^{2}$            </p>
-<p>   ​                     so, 若 $\overrightarrow {AC} = \overrightarrow {BD}$，则  $\overrightarrow {AB} \cdot \overrightarrow {BC} = 0$ </p>
 <h2 id="Components-and-Projection"><a href="#Components-and-Projection" class="headerlink" title="Components and Projection"></a>Components and Projection</h2><p>$\vec A$ 是一个向量，$\hat u$ 是一个单位向量，则 $\vec A$ 在 $\hat u$方向上的分量为 $\vec A \cdot \hat u$ </p>
-<img src="/2022/07/10/mit-18-02-section1/image-20220723163136673.png" alt="image-20220723163136673" style="zoom:50%;">
-
+<p><img src="/2022/07/10/mit-18-02-section1/image-20220723163136673.png" alt="image-20220723163136673" style="zoom:50%;"></p>
 <p>​                                                                                            $\vec A \cdot \hat u = |\vec A||\hat u|cos\theta$          [Note: the component is a Scalar]</p>
 <p>平行于 $\hat u$ 的边，也称为 $\vec A$ 在 $\hat u$ 上的正交投影 (orthogonal projection)</p>
 <p>对于非单位向量，比如 $\vec A$ 在向量 $\vec B$ 方向的分量为 $\vec A$ 在 $\hat u = \frac {\vec B} {|\vec B|}$ 方向的分量。($\hat u$ 与向量 $\vec B$  相同方向)</p>
 <p>Example: find the component of $A$ in the direction of $B$</p>
 <ol>
-<li> $|A| = 2, |B| = 5, \theta = \frac {\pi} 4$ </li>
-</ol>
-<p>   component = $|A|cos\theta = 2cos(\pi/4) = \sqrt2$</p>
-<ol start="2">
-<li> $A= i + 2j, B=3i + 4j$ </li>
-</ol>
-<p>   Unit vector in direction B: $\hat u = \frac B {|B|} = \frac 3 5 i + \frac 4 5 j \Rightarrow$ component is: $A \cdot \frac B {|B|} = \frac 3 5 + \frac 8 5 = \frac {11} 5$</p>
-<ol start="3">
-<li><p>find the component of $A=&lt;2,2&gt;$ in the direction of $\hat u= &lt;-1, 0&gt;$</p>
-<p> the componet is $A \cdot \hat u=&lt;2,2&gt; \cdot &lt;-1,0&gt; = -2$ </p>
+<li><p>$|A| = 2, |B| = 5, \theta = \frac {\pi} 4$ </p>
+<p>component = $|A|cos\theta = 2cos(\pi/4) = \sqrt2$</p>
+</li>
+<li><p>$A= i + 2j, B=3i + 4j$ </p>
+<p>Unit vector in direction B: $\hat u = \frac B {|B|} = \frac 3 5 i + \frac 4 5 j \Rightarrow$ component is: $A \cdot \frac B {|B|} = \frac 3 5 + \frac 8 5 = \frac {11} 5$</p>
+</li>
+<li><p>find the component of $A=<2,2>$ in the direction of $\hat u= &lt;-1, 0&gt;$</2,2></p>
+<p>the componet is $A \cdot \hat u=<2,2> \cdot &lt;-1,0&gt; = -2$ </2,2></p>
+<p><img src="/2022/07/10/mit-18-02-section1/image-20220723184427432.png" alt="image-20220723184427432" style="zoom:33%;"></p>
 </li>
 </ol>
-   <img src="/2022/07/10/mit-18-02-section1/image-20220723184427432.png" alt="image-20220723184427432" style="zoom:33%;">
-
 <blockquote>
 <p>We emphasize one more time that the component of a vector is a scalar.</p>
 </blockquote>
 <h2 id="Determinants-and-Cross-Product"><a href="#Determinants-and-Cross-Product" class="headerlink" title="Determinants and Cross Product"></a>Determinants and Cross Product</h2><p>上面点积的第 4 个应用，有更简便的解法，就是应用行列式 (determinants)。</p>
 <p>由前可知，计算 $sin\theta$ 比较麻烦，计算 $cos\theta$ 相对容易，所以，求 $sin\theta$ 转成求 $cos\theta’ = cos(\frac \pi 2 - \theta)$ ，即向量 $\vec A$ 逆时针旋转 $90^0$ 得到向量 $\vec A’$ </p>
-<img src="/2022/07/10/mit-18-02-section1/v2-13f64e3957dd61fddd15d5141dfef509_720w.jpg" alt="img" style="zoom:80%;">
-
+<p><img src="/2022/07/10/mit-18-02-section1/v2-13f64e3957dd61fddd15d5141dfef509_720w.jpg" alt="img" style="zoom:80%;"></p>
 <p>三角形的面积：$Area = \frac 1 2 |\vec A||\vec B|sin\theta = \frac 1 2 |\vec A||\vec B|cos\theta’ = \frac 1 2 \vec A’ \cdot \vec B$</p>
-<p>$\vec A’$ 如何计算呢？假设 $\vec A$ 为 $&lt;a_1, a_2&gt;$ ，那么从下图可知，$\vec A’$ 为 $&lt;-a_2, a_1&gt;$</p>
+<p>$\vec {A’}$ 如何计算呢？假设 $\vec A$ 为 $\langle a_1, a_2 \rangle$ 那么从下图可知，$\vec {A’}$  为  $\langle -a_2, a_1 \rangle$</p>
 <p><img src="/2022/07/10/mit-18-02-section1/v2-0495f2de332dc85e8840548385a1e7e4_720w.jpg" alt="img"></p>
 <blockquote>
-<p>$\vec A’$ 与 $\vec A$ 正交，所以，$\vec A \cdot \vec A’ = 0$，就能推测出 $\vec A’$ 为 $&lt;-a_2, a_1&gt;$ </p>
+<p>$\vec A’$ 与 $\vec A$ 正交，所以，$\vec A \cdot \vec A’ = 0$，就能推测出 $\vec A’$ 为  $\langle -a_2, a_1 \rangle$</p>
 </blockquote>
 <p>那么三角形面积：                 $Area = \frac 1 2 |\vec A||\vec B|sin\theta = \frac 1 2 |\vec A||\vec B|cos\theta’ = \frac 1 2(\vec A’ \cdot \vec B)$</p>
-<p>$$<br>\vec A’ \cdot \vec B = &lt;-a_2, a_1&gt; \cdot  = a_1b_2 -a_2b_1 = det(\vec A, \vec B) = \left|\begin{array}{ll}<br>a_{1} &amp; a_{2} \<br>b_{1} &amp; b_{2}<br>\end{array}\right|<br>$$</p>
-<blockquote>
+<script type="math/tex; mode=display">
+\vec A' \cdot \vec B = \langle -a_2, a_1 \rangle \cdot  = a_1b_2 -a_2b_1 = det(\vec A, \vec B) = \left|\begin{array}{ll}
+a_{1} & a_{2} \\
+b_{1} & b_{2}
+\end{array}\right|</script><blockquote>
 <p>面积是正值，以上的计算结果须取绝对值。</p>
 </blockquote>
 <h3 id="Determinants"><a href="#Determinants" class="headerlink" title="Determinants"></a>Determinants</h3><blockquote>
 <p>空间中的行列式，用来计算体积，平面中的行列式，则是用来计算面积</p>
 </blockquote>
 <p>假设有三个向量 $\vec A, \vec B, \vec C$，构成的行列式为：</p>
-<p>​                        $\operatorname{det}(\vec{A}, \vec{B}, \vec{C})=\left|\begin{array}{lll}<br>a_{1} &amp; a_{2} &amp; a_{3} \<br>b_{1} &amp; b_{2} &amp; b_{3} \<br>c_{1} &amp; c_{2} &amp; c_{3}<br>\end{array}\right|=a_{1}\left|\begin{array}{cc}<br>b_{2} &amp; b_{3} \<br>c_{2} &amp; c_{3}<br>\end{array}\right|-a_{2}\left|\begin{array}{ll}<br>b_{1} &amp; b_{3} \<br>c_{1} &amp; c_{3}<br>\end{array}\right|+a_{3}\left|\begin{array}{ll}<br>b_{1} &amp; b_{2} \<br>c_{1} &amp; c_{2}<br>\end{array}\right|$</p>
-<p>计算方法：从第一行 $a_1, a_2, a_3$ 入手， 每项乘以一个两行两列的子行列式，为何是两行两列呢？因为要去除此项所在的行和列，得到一个两行两列的子行列式。比如当前项为 $a_1$ ，则子行列式为 $\left|\begin{array}{ll}<br>b_{2} &amp; b_{3} \<br>c_{2} &amp; c_{3}<br>\end{array}\right|$</p>
+<script type="math/tex; mode=display">
+\operatorname{det}(\vec{A}, \vec{B}, \vec{C})=\left|\begin{array}{lll}
+a_{1} & a_{2} & a_{3} \\
+b_{1} & b_{2} & b_{3} \\
+c_{1} & c_{2} & c_{3}
+\end{array}\right|=a_{1}\left|\begin{array}{cc}
+b_{2} & b_{3} \\
+c_{2} & c_{3}
+\end{array}\right|-a_{2}\left|\begin{array}{ll}
+b_{1} & b_{3} \\
+c_{1} & c_{3}
+\end{array}\right|+a_{3}\left|\begin{array}{ll}
+b_{1} & b_{2} \\
+c_{1} & c_{2}
+\end{array}\right|</script><p>计算方法：从第一行 $a_1, a_2, a_3$ 入手， 每项乘以一个两行两列的子行列式，为何是两行两列呢？因为要去除此项所在的行和列，得到一个两行两列的子行列式。比如当前项为 $a_1$ ，则子行列式为 $\left|\begin{array}{ll}<br>b_{2} &amp; b_{3} \<br>c_{2} &amp; c_{3}<br>\end{array}\right|$</p>
 <blockquote>
 <p>须注意的是：在上述行列式计算中，第二项前面为负号。其原因和空间的方向有关，如果交换空间中的两个坐标轴，就改变的坐标的偏手性。关于行列式展开中，正负是交替出现的。</p>
 </blockquote>
@@ -465,7 +460,21 @@
 </blockquote>
 <p>定义： $\vec A$ 和 $\vec B$ 的叉积表示为 $\vec A \times \vec B$ </p>
 <p>叉积的计算方法：</p>
-<p>$$<br>$\vec{A} \times \vec{B}=\left|\begin{array}{ccc}<br>\vec{i} &amp; \vec{j} &amp; \vec{k} \<br>a_{1} &amp; a_{2} &amp; a_{3} \<br>b_{1} &amp; b_{2} &amp; b_{3}<br>\end{array}\right|=\left|\begin{array}{cc}<br>a_{2} &amp; a_{3} \<br>b_{2} &amp; b_{3}<br>\end{array}\right| \vec{i}-\left|\begin{array}{cc}<br>a_{1} &amp; a_{3} \<br>b_{1} &amp; b_{3}<br>\end{array}\right| \vec{j}+\left|\begin{array}{cc}<br>a_{1} &amp; a_{2} \<br>b_{1} &amp; b_{2}<br>\end{array}\right| \vec{k}<br>$$<br>叉积的几何意义：</p>
+<script type="math/tex; mode=display">
+$\vec{A} \times \vec{B}=\left|\begin{array}{ccc}
+\vec{i} & \vec{j} & \vec{k} \\
+a_{1} & a_{2} & a_{3} \\
+b_{1} & b_{2} & b_{3}
+\end{array}\right|=\left|\begin{array}{cc}
+a_{2} & a_{3} \\
+b_{2} & b_{3}
+\end{array}\right| \vec{i}-\left|\begin{array}{cc}
+a_{1} & a_{3} \\
+b_{1} & b_{3}
+\end{array}\right| \vec{j}+\left|\begin{array}{cc}
+a_{1} & a_{2} \\
+b_{1} & b_{2}
+\end{array}\right| \vec{k}</script><p>叉积的几何意义：</p>
 <ol>
 <li><p>叉积的模长 $|\vec A \times \vec B|$ 等于向量 $\vec A, \vec B$ 构成的平行四边形的面积；</p>
 </li>
@@ -478,17 +487,21 @@
 <p>确定向量叉积的结果向量的方向，采用右手规则，如下图，$\hat i \times \hat j = \hat k$ ，并且结果向量的模长等于 1 </p>
 <p>向量叉积不满足交换律！     </p>
 </blockquote>
-<img src="/2022/07/10/mit-18-02-section1/v2-fc0a99f109452aeb8578716962cd94e0_720w.jpg" alt="img" style="zoom:80%;">
-
-<p>从行列式角度也能得到同样的结果：<br>$$<br>\left|\begin{array}{ccc}<br>\vec{i} &amp; \vec{j} &amp; \vec{k} \<br>1 &amp; 0 &amp; 0 \<br>0 &amp; 1 &amp; 0<br>\end{array}\right|=0 \vec{i}-0 \vec{j}+1 \vec{k}=\vec{k}<br>$$</p>
-<h5 id="另一个角度看体积"><a href="#另一个角度看体积" class="headerlink" title="另一个角度看体积"></a>另一个角度看体积</h5><blockquote>
+<p><img src="/2022/07/10/mit-18-02-section1/v2-fc0a99f109452aeb8578716962cd94e0_720w.jpg" alt="img" style="zoom:80%;"></p>
+<p>从行列式角度也能得到同样的结果：            </p>
+<script type="math/tex; mode=display">
+\left|\begin{array}{ccc}
+\vec{i} & \vec{j} & \vec{k} \\
+1 & 0 & 0 \\
+0 & 1 & 0
+\end{array}\right|=0 \vec{i}-0 \vec{j}+1 \vec{k}=\vec{k}</script><h5 id="另一个角度看体积"><a href="#另一个角度看体积" class="headerlink" title="另一个角度看体积"></a>另一个角度看体积</h5><blockquote>
 <p>假设在三维空间中有如下所示三个向量构成一个平行六面体，如下图所示，如何来计算它的体积？</p>
 </blockquote>
 <p><img src="/2022/07/10/mit-18-02-section1/v2-0d54eaab52641f513269977fedb87fae_720w.jpg" alt="img"></p>
-<p>平行六面体的体积等于底面积乘以高。底面积大小等于向量 $\vec B, \vec C$ 的叉积的结果向量的模长。高等于向量 $\vec A$ 在垂直方向的投影：即 $\vec A \cdot \hat n$ ，而 $\hat n$ 可从 $$\frac {\vec B \times \vec C}{|\vec B \times\vec C|}$$ 求得。</p>
+<p>平行六面体的体积等于底面积乘以高。底面积大小等于向量 $\vec B, \vec C$ 的叉积的结果向量的模长。高等于向量 $\vec A$ 在垂直方向的投影：即 $\vec A \cdot \hat n$ ，而 $\hat n$ 可从 <script type="math/tex">\frac {\vec B \times \vec C}{|\vec B \times\vec C|}</script> 求得。</p>
 <p>那么平行六面体的体积等于（混合积 triple product 与行列式 det 是一样的东西）：                    </p>
-<p>$$<br>|\vec B \times \vec C| ; (\vec A \cdot  \frac {\vec B \times \vec C}{|\vec B \times\vec C|}) = \vec A \cdot (\vec B \times \vec C)= det(\vec A, \vec B, \vec C)<br>$$</p>
-<blockquote>
+<script type="math/tex; mode=display">
+|\vec B \times \vec C| \; (\vec A \cdot  \frac {\vec B \times \vec C}{|\vec B \times\vec C|}) = \vec A \cdot (\vec B \times \vec C)= det(\vec A, \vec B, \vec C)</script><blockquote>
 <p>关于叉积的补充：</p>
 <ol>
 <li>$\vec A \times \vec B = - \vec B \times \vec A$</li>
@@ -499,27 +512,34 @@
 <ol>
 <li>求所示四边形的面积</li>
 </ol>
-<img src="/2022/07/10/mit-18-02-section1/image-20220723194110222.png" alt="image-20220723194110222" style="zoom:50%;">
-
+<p><img src="/2022/07/10/mit-18-02-section1/image-20220723194110222.png" alt="image-20220723194110222" style="zoom:50%;"></p>
 <p>​            先将此四边形分为两个三角形</p>
-<img src="/2022/07/10/mit-18-02-section1/image-20220723194230995.png" alt="image-20220723194230995" style="zoom:50%;">
-
-<p>​            如图所示，<br>$$<br>Area \  \Delta OAB = \frac{1}{2}\left|\operatorname{det}\left(\begin{array}{ll}<br>1 &amp; 2 \<br>4 &amp; 3<br>\end{array}\right)\right|=\frac{1}{2}|-5|=\frac{5}{2}<br>$$</p>
-<p>$$<br>Area \ \Delta OBC = \frac{1}{2}\left|\operatorname{det}\left(\begin{array}{ll}<br>4 &amp; 3 \<br>3 &amp; -1<br>\end{array}\right)\right|=\frac{1}{2}|-13|=\frac{13}{2}<br>$$<br>​                                                        So,              $Area \ OABC = \frac 5 2 + \frac {13} 2 = 9$</p>
-<ol start="2">
-<li> 求所示平行四边形的面积</li>
+<p><img src="/2022/07/10/mit-18-02-section1/image-20220723194230995.png" alt="image-20220723194230995" style="zoom:50%;"></p>
+<p>​            如图所示， </p>
+<script type="math/tex; mode=display">
+Area \  \Delta OAB = \frac{1}{2}\left|\operatorname{det}\left(\begin{array}{ll}
+1 & 2 \\
+4 & 3
+\end{array}\right)\right|=\frac{1}{2}|-5|=\frac{5}{2}</script><script type="math/tex; mode=display">
+Area \ \Delta OBC = \frac{1}{2}\left|\operatorname{det}\left(\begin{array}{ll}
+4 & 3 \\
+3 & -1
+\end{array}\right)\right|=\frac{1}{2}|-13|=\frac{13}{2}</script><p>​                                                        So,              $Area \ OABC = \frac 5 2 + \frac {13} 2 = 9$</p>
+<ol>
+<li><p>求所示平行四边形的面积</p>
+<p><img src="/2022/07/10/mit-18-02-section1/image-20220724105349594.png" alt="image-20220724105349594" style="zoom:50%;"></p>
+<p>面积由确定这个四边形的向量的行列式求出：</p>
+<p>​                                                                $Area  = \left|\operatorname{det}\left(\begin{array}{ll}<br>2 &amp; 3 \<br>-1 &amp; 2<br>\end{array}\right)\right|=4 + 3= 7$</p>
+</li>
+<li><p>求由三个顶点：$(0, 0)$， $(-2, 2)$ 和 $(1, 3)$ 组成的三角形的面积</p>
+<p><img src="/2022/07/10/mit-18-02-section1/image-20220724110731856.png" alt="image-20220724110731856" style="zoom:50%;"></p>
+<p>此三角形是两个向量： $<1,3>$ 和 $&lt;-2, 2&gt;$ 组成的平行四边形的一半，故其面积为：</1,3></p>
+<script type="math/tex; mode=display">
+Area = \frac 1 2 \left|\operatorname{det}\left(\begin{array}{ll}
+1 & 3 \\
+-2 & 2
+\end{array}\right)\right|=\frac 1 2(2 + 6)= 4</script></li>
 </ol>
-   <img src="/2022/07/10/mit-18-02-section1/image-20220724105349594.png" alt="image-20220724105349594" style="zoom:50%;">
-
-<p>   面积由确定这个四边形的向量的行列式求出：</p>
-<p>   ​                                                                $Area  = \left|\operatorname{det}\left(\begin{array}{ll}<br>   2 &amp; 3 \<br>   -1 &amp; 2<br>   \end{array}\right)\right|=4 + 3= 7$</p>
-<ol start="3">
-<li> 求由三个顶点：$(0, 0)$， $(-2, 2)$ 和 $(1, 3)$ 组成的三角形的面积</li>
-</ol>
-   <img src="/2022/07/10/mit-18-02-section1/image-20220724110731856.png" alt="image-20220724110731856" style="zoom:50%;">
-
-<p>   此三角形是两个向量： $&lt;1,3&gt;$ 和 $&lt;-2, 2&gt;$ 组成的平行四边形的一半，故其面积为：</p>
-<p>   $$<br>   Area = \frac 1 2 \left|\operatorname{det}\left(\begin{array}{ll}<br>   1 &amp; 3 \<br>   -2 &amp; 2<br>   \end{array}\right)\right|=\frac 1 2(2 + 6)= 4<br>   $$</p>
 <hr>
 <h4 id="The-Laplace-expansion-minors-cofactors-and-adjoints"><a href="#The-Laplace-expansion-minors-cofactors-and-adjoints" class="headerlink" title="The Laplace expansion, minors, cofactors and adjoints"></a>The Laplace expansion, minors, cofactors and adjoints</h4><p>拉普拉斯展开是一个公式，它允许我们将矩阵的行列式表示为较小矩阵行列式的线性组合，称为小矩阵。</p>
 <p>拉普拉斯展开式还允许我们根据它的有符号次要写出矩阵的逆，称为辅因子。 后者通常收集在称为伴随矩阵的矩阵中。</p>
@@ -527,7 +547,11 @@
 <p>Definition:</p>
 <p>​                    Let $A$ be a $K \times K$ matrix (with $K \geq 2$). Denote by $A_{ij}$ the entry of $A$ at the intersection of the $i-th$ row and $j-th$ column. The minor of $A_{ij}$ is the determinant of the sub-matrix obtained from $A$ by deleting its $i-th$ row and $j-th$ column.</p>
 <p>Example: Define the $3 \times 3$ matrix</p>
-<p>​                                                                                        $$A=\begin{bmatrix}<br>4 &amp; 1 &amp; 2 \<br>0 &amp; 2 &amp; 0 \<br>1 &amp; 0 &amp; 2<br>\end{bmatrix}$$</p>
+<p>​                                                                                        <script type="math/tex">A=\begin{bmatrix}
+4 & 1 & 2 \\\
+0 & 2 & 0 \\\
+1 & 0 & 2
+\end{bmatrix}</script></p>
 <p>Take the entry $A_{11}=4$, 则 sub-matrix 为：</p>
 <p>​                                                                                                    $\left[\begin{array}{lll}<br>2 &amp; 0 \<br>0 &amp; 2<br>\end{array}\right]$ </p>
 <p>因此，minor of $A_{11}$ 为：</p>
@@ -602,7 +626,7 @@
 <p>$A$ 的转置矩阵可如下计算：</p>
 <p>​                                                                                            $\begin{aligned}<br>A^{-1} &amp;=\frac{1}{\operatorname{det}(A)} \operatorname{adj}(A) \<br>&amp;=\frac{1}{2}\left[\begin{array}{cc}<br>1 &amp; -3 \<br>0 &amp; 2<br>\end{array}\right] \<br>&amp;=\left[\begin{array}{cc}<br>1 / 2 &amp; -3 / 2 \<br>0 &amp; 1<br>\end{array}\right]<br>\end{aligned}$</p>
 <p>验证一下：</p>
-<p>​                                                                                    $$\begin{aligned} A A^{-1} &amp;=\left[\begin{array}{ll}2 &amp; 3 \ 0 &amp; 1\end{array}\right]\left[\begin{array}{cc}1 / 2 &amp; -3 / 2 \ 0 &amp; 1\end{array}\right] \ &amp;=\left[\begin{array}{cc}2 \cdot \frac{1}{2}+3 \cdot 0 &amp; 2 \cdot\left(-\frac{3}{2}\right)+3 \cdot 1 \ 0 \cdot \frac{1}{2}+1 \cdot 0 &amp; 0 \cdot\left(-\frac{3}{2}\right)+1 \cdot 1\end{array}\right] \ &amp;=\left[\begin{array}{ll}1 &amp; 0 \ 0 &amp; 1\end{array}\right]=I \end{aligned}$$</p>
+<p>​                                                                                    <script type="math/tex">\begin{aligned} A A^{-1} &=\left[\begin{array}{ll}2 & 3 \\ 0 & 1\end{array}\right]\left[\begin{array}{cc}1 / 2 & -3 / 2 \\ 0 & 1\end{array}\right] \\ &=\left[\begin{array}{cc}2 \cdot \frac{1}{2}+3 \cdot 0 & 2 \cdot\left(-\frac{3}{2}\right)+3 \cdot 1 \\ 0 \cdot \frac{1}{2}+1 \cdot 0 & 0 \cdot\left(-\frac{3}{2}\right)+1 \cdot 1\end{array}\right] \\ &=\left[\begin{array}{ll}1 & 0 \\ 0 & 1\end{array}\right]=I \end{aligned}</script></p>
 <p>可见，$AA^{-1}$ 的结果是一个 identity matrix, 上面计算结果确是 $A$ 的逆矩阵。</p>
 
         </div>
@@ -672,6 +696,23 @@
 </footer>
 
     </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
 </body>
 
 </html>
