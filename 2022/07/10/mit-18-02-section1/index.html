@@ -445,7 +445,7 @@
 <p>$\vec A’$ 与 $\vec A$ 正交，所以，$\vec A \cdot \vec A’ = 0$，就能推测出 $\vec A’$ 为 $&lt;-a_2, a_1&gt;$ </p>
 </blockquote>
 <p>那么三角形面积：                 $Area = \frac 1 2 |\vec A||\vec B|sin\theta = \frac 1 2 |\vec A||\vec B|cos\theta’ = \frac 1 2(\vec A’ \cdot \vec B)$</p>
-<p>$\vec A’ \cdot \vec B = &lt;-a_2, a_1&gt; \cdot &lt;b_1, b_2&gt; = a_1b_2 -a_2b_1 = det(\vec A, \vec B) = \left|\begin{array}{ll}<br>a_{1} &amp; a_{2} \<br>b_{1} &amp; b_{2}<br>\end{array}\right|$</p>
+<p>$$<br>\vec A’ \cdot \vec B = &lt;-a_2, a_1&gt; \cdot  = a_1b_2 -a_2b_1 = det(\vec A, \vec B) = \left|\begin{array}{ll}<br>a_{1} &amp; a_{2} \<br>b_{1} &amp; b_{2}<br>\end{array}\right|<br>$$</p>
 <blockquote>
 <p>面积是正值，以上的计算结果须取绝对值。</p>
 </blockquote>
@@ -465,8 +465,7 @@
 </blockquote>
 <p>定义： $\vec A$ 和 $\vec B$ 的叉积表示为 $\vec A \times \vec B$ </p>
 <p>叉积的计算方法：</p>
-<p>​                                    $\vec{A} \times \vec{B}=\left|\begin{array}{ccc}<br>\vec{i} &amp; \vec{j} &amp; \vec{k} \<br>a_{1} &amp; a_{2} &amp; a_{3} \<br>b_{1} &amp; b_{2} &amp; b_{3}<br>\end{array}\right|=\left|\begin{array}{cc}<br>a_{2} &amp; a_{3} \<br>b_{2} &amp; b_{3}<br>\end{array}\right| \vec{i}-\left|\begin{array}{cc}<br>a_{1} &amp; a_{3} \<br>b_{1} &amp; b_{3}<br>\end{array}\right| \vec{j}+\left|\begin{array}{cc}<br>a_{1} &amp; a_{2} \<br>b_{1} &amp; b_{2}<br>\end{array}\right| \vec{k}$</p>
-<p>叉积的几何意义：</p>
+<p>$$<br>$\vec{A} \times \vec{B}=\left|\begin{array}{ccc}<br>\vec{i} &amp; \vec{j} &amp; \vec{k} \<br>a_{1} &amp; a_{2} &amp; a_{3} \<br>b_{1} &amp; b_{2} &amp; b_{3}<br>\end{array}\right|=\left|\begin{array}{cc}<br>a_{2} &amp; a_{3} \<br>b_{2} &amp; b_{3}<br>\end{array}\right| \vec{i}-\left|\begin{array}{cc}<br>a_{1} &amp; a_{3} \<br>b_{1} &amp; b_{3}<br>\end{array}\right| \vec{j}+\left|\begin{array}{cc}<br>a_{1} &amp; a_{2} \<br>b_{1} &amp; b_{2}<br>\end{array}\right| \vec{k}<br>$$<br>叉积的几何意义：</p>
 <ol>
 <li><p>叉积的模长 $|\vec A \times \vec B|$ 等于向量 $\vec A, \vec B$ 构成的平行四边形的面积；</p>
 </li>
@@ -481,14 +480,14 @@
 </blockquote>
 <img src="/2022/07/10/mit-18-02-section1/v2-fc0a99f109452aeb8578716962cd94e0_720w.jpg" alt="img" style="zoom:80%;">
 
-<p>从行列式角度也能得到同样的结果：            $\left|\begin{array}{ccc}<br>\vec{i} &amp; \vec{j} &amp; \vec{k} \<br>1 &amp; 0 &amp; 0 \<br>0 &amp; 1 &amp; 0<br>\end{array}\right|=0 \vec{i}-0 \vec{j}+1 \vec{k}=\vec{k}$</p>
+<p>从行列式角度也能得到同样的结果：<br>$$<br>\left|\begin{array}{ccc}<br>\vec{i} &amp; \vec{j} &amp; \vec{k} \<br>1 &amp; 0 &amp; 0 \<br>0 &amp; 1 &amp; 0<br>\end{array}\right|=0 \vec{i}-0 \vec{j}+1 \vec{k}=\vec{k}<br>$$</p>
 <h5 id="另一个角度看体积"><a href="#另一个角度看体积" class="headerlink" title="另一个角度看体积"></a>另一个角度看体积</h5><blockquote>
 <p>假设在三维空间中有如下所示三个向量构成一个平行六面体，如下图所示，如何来计算它的体积？</p>
 </blockquote>
 <p><img src="/2022/07/10/mit-18-02-section1/v2-0d54eaab52641f513269977fedb87fae_720w.jpg" alt="img"></p>
-<p>平行六面体的体积等于底面积乘以高。底面积大小等于向量 $\vec B, \vec C$ 的叉积的结果向量的模长。高等于向量 $\vec A$ 在垂直方向的投影：即 $\vec A \cdot \hat n$ ，而 $\hat n$ 可从 $\frac {\vec B \times \vec C}{|\vec B \times\vec C|}$ 求得。</p>
+<p>平行六面体的体积等于底面积乘以高。底面积大小等于向量 $\vec B, \vec C$ 的叉积的结果向量的模长。高等于向量 $\vec A$ 在垂直方向的投影：即 $\vec A \cdot \hat n$ ，而 $\hat n$ 可从 $$\frac {\vec B \times \vec C}{|\vec B \times\vec C|}$$ 求得。</p>
 <p>那么平行六面体的体积等于（混合积 triple product 与行列式 det 是一样的东西）：                    </p>
-<p>​                                             $|\vec B \times \vec C| ; (\vec A \cdot  \frac {\vec B \times \vec C}{|\vec B \times\vec C|}) = \vec A \cdot (\vec B \times \vec C)= det(\vec A, \vec B, \vec C)$ </p>
+<p>$$<br>|\vec B \times \vec C| ; (\vec A \cdot  \frac {\vec B \times \vec C}{|\vec B \times\vec C|}) = \vec A \cdot (\vec B \times \vec C)= det(\vec A, \vec B, \vec C)<br>$$</p>
 <blockquote>
 <p>关于叉积的补充：</p>
 <ol>
@@ -505,9 +504,8 @@
 <p>​            先将此四边形分为两个三角形</p>
 <img src="/2022/07/10/mit-18-02-section1/image-20220723194230995.png" alt="image-20220723194230995" style="zoom:50%;">
 
-<p>​            如图所示， $Area \  \Delta OAB = \frac{1}{2}\left|\operatorname{det}\left(\begin{array}{ll}<br>1 &amp; 2 \<br>4 &amp; 3<br>\end{array}\right)\right|=\frac{1}{2}|-5|=\frac{5}{2}$</p>
-<p>​                                $Area \ \Delta OBC = \frac{1}{2}\left|\operatorname{det}\left(\begin{array}{ll}<br>4 &amp; 3 \<br>3 &amp; -1<br>\end{array}\right)\right|=\frac{1}{2}|-13|=\frac{13}{2}$</p>
-<p>​            So,              $Area \ OABC = \frac 5 2 + \frac {13} 2 = 9$</p>
+<p>​            如图所示，<br>$$<br>Area \  \Delta OAB = \frac{1}{2}\left|\operatorname{det}\left(\begin{array}{ll}<br>1 &amp; 2 \<br>4 &amp; 3<br>\end{array}\right)\right|=\frac{1}{2}|-5|=\frac{5}{2}<br>$$</p>
+<p>$$<br>Area \ \Delta OBC = \frac{1}{2}\left|\operatorname{det}\left(\begin{array}{ll}<br>4 &amp; 3 \<br>3 &amp; -1<br>\end{array}\right)\right|=\frac{1}{2}|-13|=\frac{13}{2}<br>$$<br>​                                                        So,              $Area \ OABC = \frac 5 2 + \frac {13} 2 = 9$</p>
 <ol start="2">
 <li> 求所示平行四边形的面积</li>
 </ol>
@@ -521,7 +519,91 @@
    <img src="/2022/07/10/mit-18-02-section1/image-20220724110731856.png" alt="image-20220724110731856" style="zoom:50%;">
 
 <p>   此三角形是两个向量： $&lt;1,3&gt;$ 和 $&lt;-2, 2&gt;$ 组成的平行四边形的一半，故其面积为：</p>
-<p>   ​                                                        $Area = \frac 1 2 \left|\operatorname{det}\left(\begin{array}{ll}<br>   1 &amp; 3 \<br>   -2 &amp; 2<br>   \end{array}\right)\right|=\frac 1 2(2 + 6)= 4$</p>
+<p>   $$<br>   Area = \frac 1 2 \left|\operatorname{det}\left(\begin{array}{ll}<br>   1 &amp; 3 \<br>   -2 &amp; 2<br>   \end{array}\right)\right|=\frac 1 2(2 + 6)= 4<br>   $$</p>
+<hr>
+<h4 id="The-Laplace-expansion-minors-cofactors-and-adjoints"><a href="#The-Laplace-expansion-minors-cofactors-and-adjoints" class="headerlink" title="The Laplace expansion, minors, cofactors and adjoints"></a>The Laplace expansion, minors, cofactors and adjoints</h4><p>拉普拉斯展开是一个公式，它允许我们将矩阵的行列式表示为较小矩阵行列式的线性组合，称为小矩阵。</p>
+<p>拉普拉斯展开式还允许我们根据它的有符号次要写出矩阵的逆，称为辅因子。 后者通常收集在称为伴随矩阵的矩阵中。</p>
+<h5 id="Minors"><a href="#Minors" class="headerlink" title="Minors"></a>Minors</h5><p>Let us start by defining minors.</p>
+<p>Definition:</p>
+<p>​                    Let $A$ be a $K \times K$ matrix (with $K \geq 2$). Denote by $A_{ij}$ the entry of $A$ at the intersection of the $i-th$ row and $j-th$ column. The minor of $A_{ij}$ is the determinant of the sub-matrix obtained from $A$ by deleting its $i-th$ row and $j-th$ column.</p>
+<p>Example: Define the $3 \times 3$ matrix</p>
+<p>​                                                                                        $$A=\begin{bmatrix}<br>4 &amp; 1 &amp; 2 \<br>0 &amp; 2 &amp; 0 \<br>1 &amp; 0 &amp; 2<br>\end{bmatrix}$$</p>
+<p>Take the entry $A_{11}=4$, 则 sub-matrix 为：</p>
+<p>​                                                                                                    $\left[\begin{array}{lll}<br>2 &amp; 0 \<br>0 &amp; 2<br>\end{array}\right]$ </p>
+<p>因此，minor of $A_{11}$ 为：</p>
+<p>​                                                                            $M_{11} = \operatorname{det}\left(\begin{array}{ll}<br>2 &amp; 0 \<br>0 &amp; 2<br>\end{array}\right) = 2 \cdot 2 - 0 \cdot 0 = 4 $</p>
+<p>​            minor of $A_{23}$ 为：</p>
+<p>​                                                                          $M_{23} = \operatorname{det}\left(\begin{array}{ll}<br>4 &amp; 1 \<br>1 &amp; 0<br>\end{array}\right) = 4 \cdot 0 - 1 \cdot 1 = -1 $</p>
+<h5 id="Cofactors"><a href="#Cofactors" class="headerlink" title="Cofactors"></a>Cofactors</h5><p>A cofactor is a minor whose sign may have been changed depending on the location of the respective matrix entry.</p>
+<p>Definition: </p>
+<p>​                    Let $A$ be a $K \times K$ matrix (with $K \geq 2$).  Denote by $M_{ij}$ the minor of an entry $A_{ij}$. the cofactor of $A_{ij}$ is:</p>
+<p>​                                                                                    $C_{ij} = (-1)^{i+j}M_{ij}$</p>
+<p>As an example, the pattern of sign changes $(-1)^{i+j}$ of a $4 \times 4$ matrix is</p>
+<p>​                                                                                                    $\left[\begin{array}{l}<br>+-+- \<br>-+-+ \<br>+-+- \<br>-+-+<br>\end{array}\right]$</p>
+<p>Example:  Consider the $3 \times 3$ matrix</p>
+<p>​                                                                                            $A=\left[\begin{array}{lll}<br>3 &amp; 0 &amp; 2 \<br>1 &amp; 1 &amp; 0 \<br>1 &amp; 5 &amp; 4<br>\end{array}\right]$ </p>
+<p>Take the entry $A_{23}=0$, the minor of $A_{23}$ is:</p>
+<p>​                                                                                $M_{23} = \operatorname{det}\left(\begin{array}{ll}<br>3 &amp; 0 \<br>1 &amp; 5<br>\end{array}\right) = 3 \cdot 5 - 0 \cdot 1 = 15$</p>
+<p>and its cofactor is:</p>
+<p>​                                                                               $C_{23} = (-1)^{2+3} \cdot M_{23} = -15$</p>
+<hr>
+<h5 id="The-expansion"><a href="#The-expansion" class="headerlink" title="The expansion"></a>The expansion</h5><p>好了，我们现在准备介绍拉普拉斯展开。</p>
+<p>命题：</p>
+<p>​            Let $A$ be a $K \times K$ matrix (with $K \geq 2$).  Denote by $C_{ij}$ the cofactor of an entry $A_{ij}$.  Then for any row $i$, the following row expansion holds:</p>
+<p>​                                                                                    $\operatorname{det}(A)=\sum_{j=1}^{K} A_{i j} C_{i j}$</p>
+<p>​            Similarly, for any column $j$, the following column expansion holds:</p>
+<p>​                                                                                    $\operatorname{det}(A)=\sum_{i=1}^{K} A_{i j} C_{i j}$</p>
+<p>证明：</p>
+<p>换句话说，行列式可以通过将任意选择的行（列）的所有条目乘以它们各自的辅因子来计算。</p>
+<p>Example 1: Define the matrix</p>
+<p>​                                                                                    $A=\left[\begin{array}{lll}<br>1 &amp; -1 &amp; 3 \<br>0 &amp; 5 &amp; 7 \<br>0 &amp; 1 &amp; 0<br>\end{array}\right]$ </p>
+<p>We can use the Laplace expansion along the first column to compute its determinant:</p>
+<p>​                                                                    $\begin{aligned}<br>\operatorname{det}(A) &amp;=\sum_{i=1}^{K} A_{i 1} C_{i 1} \<br>&amp;=A_{11} C_{11}+A_{21} C_{21}+A_{31} C_{31} \<br>&amp;=1 \cdot C_{11}+0 \cdot C_{21}+0 \cdot C_{31} \<br>&amp;=C_{11} \<br>&amp;=(-1)^{1+1} \operatorname{det}\left(\left[\begin{array}{cc}<br>5 &amp; 7 \<br>1 &amp; 0<br>\end{array}\right]\right) \<br>&amp;=5 \cdot 0-7 \cdot 1=-7<br>\end{aligned}$</p>
+<p>Example 2: Define the matrix</p>
+<p>​                                                                                $A=\left[\begin{array}{lll}<br>3 &amp; 2 &amp; 3 \<br>0 &amp; -5 &amp; 3 \<br>5 &amp; 1 &amp; 0<br>\end{array}\right]$ </p>
+<p>We can use the Laplace expansion along the third row to compute its determinant:</p>
+<p>​                                                                    $\begin{aligned}<br>&amp; \operatorname{det}(A) \<br>=&amp; \sum_{j=1}^{K} A_{3 j} C_{3 j} \<br>=&amp; A_{31} C_{31}+A_{32} C_{32}+A_{33} C_{33} \<br>=&amp; 5 \cdot C_{31}+1 \cdot C_{32}+0 \cdot C_{33} \<br>=&amp; 5 \cdot(-1)^{3+1} \operatorname{det}\left(\left[\begin{array}{cc}<br>2 &amp; 3 \<br>-5 &amp; 3<br>\end{array}\right]\right)+(-1)^{3+2} \operatorname{det}\left(\left[\begin{array}{ll}<br>3 &amp; 3 \<br>0 &amp; 3<br>\end{array}\right]\right) \<br>=&amp; 5 \cdot(2 \cdot 3-(-5 \cdot 3))-1 \cdot(3 \cdot 3-3 \cdot 0) \<br>=&amp; 5 \cdot(6+15)-9 \<br>=&amp; 96<br>\end{aligned}$</p>
+<h5 id="Expansions-along-the-wrong-row-or-column"><a href="#Expansions-along-the-wrong-row-or-column" class="headerlink" title="Expansions along the wrong row or column"></a>Expansions along the wrong row or column</h5><p>一个有趣且有用的事实是，尽管拉普拉斯扩展:</p>
+<p>​                                                                         $\sum_{j=1}^{K} A_{i j} C_{i j}=\operatorname{det}(A)$</p>
+<p>我们得到：</p>
+<p>​                                                                         $\sum_{j=1}^{K} A_{i j} C_{k j}=0$ （当 $k \neq i$ ）</p>
+<p>In other words, if we multiply the elements of row  $i$ with the cofactors of a different row $k$ and we add them up, we get zero as a result.</p>
+<h5 id="Cofactor-Matrix"><a href="#Cofactor-Matrix" class="headerlink" title="Cofactor Matrix"></a>Cofactor Matrix</h5><p>Definition:</p>
+<p>​                    Let $A$ be a $K \times K$ matrix. Denote by $C_{ij}$ the cofactor of $A_{ij}$. Then the $K \times K$ matrix $C$ such that its $(i,j)-th$ entry is equal to $C_{ij}$ for every $i$ and $j$ is called cofactor matrix of $A$.</p>
+<h5 id="Adjoint-Matrix"><a href="#Adjoint-Matrix" class="headerlink" title="Adjoint Matrix"></a>Adjoint Matrix</h5><p>adjoint matrix 是 cofactor matrix 的转置．</p>
+<p>Definition:</p>
+<p>​                    Let $A$ be a $K \times K$ matrix and $C$ its cofactor matrix. The adjoint matrix of $A$, denote by $adj(A)$, is:</p>
+<p>​                                                                                    $adj(A) = C^T$</p>
+<h5 id="Adjoint-determinant-and-inverse"><a href="#Adjoint-determinant-and-inverse" class="headerlink" title="Adjoint, determinant and inverse"></a>Adjoint, determinant and inverse</h5><p>命题：</p>
+<p>​            Let $A$ be a $K \times K$ matrix and $adj(A)$ its adjoint. Then,</p>
+<p>​                                                                            $Aadj(A) = adj(A)A = det(A)I$</p>
+<p>​            $I$ 是 $K \times K$ 的 identity matrix.</p>
+<p>命题：</p>
+<p>​            Let $A$ be a $K \times K$ invertible matrix and $adj(A)$ its adjoint. Then</p>
+<p>​                                                                            $A^{-1} = \frac 1 {det(A)} adj(A)$</p>
+<hr>
+<p>Example:</p>
+<p>Define the matrix </p>
+<p>​                                                                                $A=\left[\begin{array}{lll}<br>-1 &amp; 1 &amp; 1 \<br>3 &amp; 5 &amp; 0 \<br>1 &amp; 0 &amp; 2<br>\end{array}\right]$ </p>
+<p>Compute the determinant of  $A$ by using Laplace expansion along its third column.</p>
+<p>The Expansion is:</p>
+<p>​                                                            $\left.\begin{array}{rl}<br>&amp; \operatorname{det}(A) \<br>= &amp; \sum_{i=1}^{K} A_{i 3} C_{i 3} \<br>= &amp; A_{13} C_{13}+A_{23} C_{23}+A_{33} C_{33} \<br>= &amp; 1 \cdot C_{13}+0 \cdot C_{23}+2 \cdot C_{33} \<br>= &amp; C_{13}+2 \cdot C_{33} \<br>= &amp; (-1)^{1+3} \operatorname{det}\left(\left[\begin{array}{cc}<br>3 &amp; 5 \<br>1 &amp; 0<br>\end{array}\right]\right)+2 \cdot(-1)^{3+3} \operatorname{det}\left(\left[\begin{array}{cc}<br>-1 &amp; 1 \<br>3 &amp; 5<br>\end{array}\right]\right) \<br>= &amp; 3 \cdot 0-5 \cdot 1+2(-1 \cdot 5-1 \cdot 3) \<br>= &amp; -5-10-6=-21<br>\end{array}\right)$</p>
+<p>Define the Matrix:</p>
+<p>​                                                                                            $A=\left[\begin{array}{lll}<br>2 &amp; 3 \0 &amp; 1<br>\end{array}\right]$ </p>
+<p>Compute the adjoint of $A$, use it to derive the inverse of $A$, and verify that the matrix thus obtained is indeed the inverse of $A$.</p>
+<p>The determinant of $A$ is:</p>
+<p>​                                                                                    $det(A) = 2 \cdot 1 - 3 \cdot 0 = 2$</p>
+<p>因此， $A$ 是可逆的。注意，删除 $A$ 的一行一列后的子矩阵是 $1 \times 1$ 的。所以， the matrix of minors of $A$ is </p>
+<p>​                                                                                                $M=\left[\begin{array}{lll}<br>1 &amp; 0 \3 &amp; 2<br>\end{array}\right]$ </p>
+<p>and the matrix of cofactor is:</p>
+<p>​                                                                                                $C=\left[\begin{array}{lll}<br>1 &amp; 0 \-3 &amp; 2<br>\end{array}\right]$ </p>
+<p>转置 cofactor 矩阵，得到 adjoint</p>
+<p>​                                                                                            $adj(A)=\left[\begin{array}{lll}<br>1 &amp; -3 \0 &amp; 2<br>\end{array}\right]$ </p>
+<p>$A$ 的转置矩阵可如下计算：</p>
+<p>​                                                                                            $\begin{aligned}<br>A^{-1} &amp;=\frac{1}{\operatorname{det}(A)} \operatorname{adj}(A) \<br>&amp;=\frac{1}{2}\left[\begin{array}{cc}<br>1 &amp; -3 \<br>0 &amp; 2<br>\end{array}\right] \<br>&amp;=\left[\begin{array}{cc}<br>1 / 2 &amp; -3 / 2 \<br>0 &amp; 1<br>\end{array}\right]<br>\end{aligned}$</p>
+<p>验证一下：</p>
+<p>​                                                                                    $$\begin{aligned} A A^{-1} &amp;=\left[\begin{array}{ll}2 &amp; 3 \ 0 &amp; 1\end{array}\right]\left[\begin{array}{cc}1 / 2 &amp; -3 / 2 \ 0 &amp; 1\end{array}\right] \ &amp;=\left[\begin{array}{cc}2 \cdot \frac{1}{2}+3 \cdot 0 &amp; 2 \cdot\left(-\frac{3}{2}\right)+3 \cdot 1 \ 0 \cdot \frac{1}{2}+1 \cdot 0 &amp; 0 \cdot\left(-\frac{3}{2}\right)+1 \cdot 1\end{array}\right] \ &amp;=\left[\begin{array}{ll}1 &amp; 0 \ 0 &amp; 1\end{array}\right]=I \end{aligned}$$</p>
+<p>可见，$AA^{-1}$ 的结果是一个 identity matrix, 上面计算结果确是 $A$ 的逆矩阵。</p>
 
         </div>
 
