@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Zhang Qijie">
+
+
+
+
+
+<title>MIT 18.06 | THE GEOMETRY OF LINEAR EQUATIONS | Zhang Qijie&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+            <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+        
+    
+
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Zhang Qijie&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Zhang Qijie&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">MIT 18.06 | THE GEOMETRY OF LINEAR EQUATIONS</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Zhang Qijie</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">September 7, 2022&nbsp;&nbsp;20:32:55</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/mit-linear-algebra-math/">mit, linear algebra, math</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <hr>
+<p><img src="/2022/09/07/MIT-18-06-Lecture1/image-20220907203733923.png" alt="image-20220907203733923"></p>
+<p>这是我<strong>重修数学</strong>计划的第三门课程：MIT 18.06  Linear Algebra 的学习笔记。</p>
+<p>本课程是矩阵论和线性代数的基本科目。重点放在在其他学科中有用的主题上，包括方程组，向量空间，行列式，特征值，相似性和正定矩阵。</p>
+<p>本章从求解方程组开始，假设方程的未知变量与方程的数目一样，即 $n$ 个方程对应 $n$ 个未知变量．如何看待这样的方程组呢？</p>
+<h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p>可以<strong>行图像</strong> (row picture) 和<strong>列图像</strong> (column picture) 的角度来看．</p>
+<ul>
+<li>行图像 (row picture)：一个方程对应一个行图像；</li>
+<li>列图像 (column picture)：方程组的一个列对应一个列图像；</li>
+<li>矩阵 (matrix)：行和列组成矩阵，矩阵对应方程组．</li>
+</ul>
+<h4 id="Example-2-个方程组，2-个变量"><a href="#Example-2-个方程组，2-个变量" class="headerlink" title="Example: 2 个方程组，2 个变量"></a>Example: 2 个方程组，2 个变量</h4><script type="math/tex; mode=display">
+\begin{cases} 2x - y = 0 \\ -x + 2y = 3\end{cases}</script><p>矩阵形式：</p>
+<script type="math/tex; mode=display">
+\begin{bmatrix}2&-1\\-1&2\end{bmatrix}\begin{bmatrix}x\\y\end{bmatrix}=\begin{bmatrix}0\\3\end{bmatrix}</script><p>等号左边第一个矩阵称为<strong>系数矩阵</strong> $A$，未知变量矩阵则被称为向量 $x$，等号右边的矩阵则被称为向量 $b$，线性方程组可被写成：$A\boldsymbol{x}=\boldsymbol{b}$ </p>
+<h3 id="Row-Picture"><a href="#Row-Picture" class="headerlink" title="Row Picture"></a>Row Picture</h3><p>行图像作图：一次取一行，在 $x,y$ 平面作图，两条直线的交点即是方程组的解．</p>
+<h4 id="Code-Snippet"><a href="#Code-Snippet" class="headerlink" title="Code Snippet"></a>Code Snippet</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">%matplotlib inline</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">x = [-<span class="number">2</span>, <span class="number">2</span>, -<span class="number">2</span>, <span class="number">2</span>]</span><br><span class="line">y = [-<span class="number">4</span>, <span class="number">4</span>, <span class="number">0.5</span>, <span class="number">2.5</span>]</span><br><span class="line"></span><br><span class="line">fig = plt.figure()</span><br><span class="line">plt.axhline(y=<span class="number">0</span>, c=<span class="string">&#x27;black&#x27;</span>)</span><br><span class="line">plt.axvline(x=<span class="number">0</span>, c=<span class="string">&#x27;black&#x27;</span>)</span><br><span class="line"></span><br><span class="line">plt.plot(x[:<span class="number">2</span>], y[:<span class="number">2</span>], x[<span class="number">2</span>:], y[<span class="number">2</span>:])</span><br><span class="line"></span><br><span class="line">plt.draw()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><img src="/2022/09/07/MIT-18-06-Lecture1/image-20220830154132479.png" alt="image-20220830154132479" style="zoom:67%;"></p>
+<h3 id="Column-Picture"><a href="#Column-Picture" class="headerlink" title="Column Picture"></a>Column Picture</h3><h4 id="Linear-Combination"><a href="#Linear-Combination" class="headerlink" title="Linear Combination"></a>Linear Combination</h4><p>原方程组可改写成如下方程，</p>
+<script type="math/tex; mode=display">
+x\begin{bmatrix}2 \\-1\end{bmatrix} + y\begin{bmatrix}-1\\2\end{bmatrix} = \begin{bmatrix}0\\3\end{bmatrix}</script><p>此方程的含义：找出合适的 $x,y$，使得 $x$ 点乘 $col1$ 加上 $y$ 点乘 $col2$ 等于右边的向量 $b$．</p>
+<p>这就是<strong>线性组合 (Linear Combination)</strong>．</p>
+<p>作图：</p>
+<h4 id="Code-Snippet-1"><a href="#Code-Snippet-1" class="headerlink" title="Code Snippet"></a>Code Snippet</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> functools <span class="keyword">import</span> partial</span><br><span class="line"></span><br><span class="line">fig = plt.figure()</span><br><span class="line">plt.axhline(y=<span class="number">0</span>, c=<span class="string">&#x27;black&#x27;</span>)</span><br><span class="line">plt.axvline(x=<span class="number">0</span>, c=<span class="string">&#x27;black&#x27;</span>)</span><br><span class="line">ax = plt.gca()</span><br><span class="line">ax.set_xlim(-<span class="number">2.5</span>, <span class="number">2.5</span>)</span><br><span class="line">ax.set_ylim(-<span class="number">3</span>, <span class="number">4</span>)</span><br><span class="line"></span><br><span class="line">arrow_vector = partial(plt.arrow, width=<span class="number">0.01</span>, head_width=<span class="number">0.1</span>, head_length=<span class="number">0.2</span>, length_includes_head=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">arrow_vector(<span class="number">0</span>, <span class="number">0</span>, <span class="number">2</span>, -<span class="number">1</span>, color=<span class="string">&#x27;g&#x27;</span>)</span><br><span class="line">arrow_vector(<span class="number">0</span>, <span class="number">0</span>, -<span class="number">1</span>, <span class="number">2</span>, color=<span class="string">&#x27;c&#x27;</span>)</span><br><span class="line">arrow_vector(<span class="number">2</span>, -<span class="number">1</span>, -<span class="number">2</span>, <span class="number">4</span>, color=<span class="string">&#x27;b&#x27;</span>)</span><br><span class="line">arrow_vector(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">3</span>, width=<span class="number">0.05</span>, color=<span class="string">&#x27;r&#x27;</span>)</span><br><span class="line"></span><br><span class="line">plt.draw()</span><br></pre></td></tr></table></figure>
+<p><img src="/2022/09/07/MIT-18-06-Lecture1/image-20220830160332022.png" alt="image-20220830160332022" style="zoom:67%;"></p>
+<p>这个例子很简单，很轻松就能解得 $x=1,y=2$，即：</p>
+<script type="math/tex; mode=display">
+1\begin{bmatrix}2 \\-1\end{bmatrix} + 2\begin{bmatrix}-1\\2\end{bmatrix} = \begin{bmatrix}0\\3\end{bmatrix}</script><p>若 $x,y$ 取定义域内的所有组合，那么 $col1, col2$ 的线性组合会得到什么样的结果呢？</p>
+<p>答案是 Span 即布满整个 2 维向量空间．</p>
+<p>再看三元方程组：</p>
+<script type="math/tex; mode=display">
+\begin{cases}2x&-y&&=0\\-x&+2y&-z&=-1\\&-3y&+4z&=4\end{cases}</script><p>先改写成矩阵形式：$A\boldsymbol{x}=\boldsymbol{b}$，其中：</p>
+<script type="math/tex; mode=display">
+A=\begin{bmatrix}2&-1&0\\-1&2&-1\\0&-3&4\end{bmatrix},\ b=\begin{bmatrix}0\\-1\\4\end{bmatrix}</script><p>行图像：三维直角坐标系，每一个方程确定一个平面，三个平面会相交于一点，这个点就是方程组的解．很难画图，更高维则更难画．</p>
+<p>列图像：方程组改写为列向量的线性组合，</p>
+<script type="math/tex; mode=display">
+x\begin{bmatrix}2\\-1\\0\end{bmatrix}+y\begin{bmatrix}-1\\2\\-3\end{bmatrix}+z\begin{bmatrix}0\\-1\\4\end{bmatrix}=\begin{bmatrix}0\\-1\\4\end{bmatrix}</script><p>巧合的是第三个列向量等于右边的向量 $b$，这当然是教授有意设计的．</p>
+<p>所以，我们需要的线性组合为：$x=0, y=0, z=1$</p>
+<p>大部分方程组的线性组合是很难轻松找到的，需要用到<strong>消元法</strong>才能解出．</p>
+<hr>
+<h3 id="Invertible"><a href="#Invertible" class="headerlink" title="Invertible"></a>Invertible</h3><p>对于任意的 $b$，是否都能解出 $A\boldsymbol{x}=\boldsymbol{b}$？这要看每一个列向量是否都是 <strong>independent</strong> 的，即不是其他列向量一个或多个的线性组合.</p>
+<p>举例来说，比如 $col1 = col2 + col3$，则不管如何线性组合，这三个向量的结果都是在一个平面内，且 $b$ 不在这个平面内．这样的矩阵被称为<strong>奇异矩阵，矩阵不可逆</strong>．</p>
+<p>方程组的矩阵形式 $A\boldsymbol{x}=\boldsymbol{b}$，如何计算这矩阵 $A$ 乘以向量 $x$ 呢？有两种方式：</p>
+<ol>
+<li>列向量线性组合，如上面的例子所示；</li>
+</ol>
+<p>​        <script type="math/tex">\begin{bmatrix}2&5\\1&3\end{bmatrix}\begin{bmatrix}1\\2\end{bmatrix}=1\begin{bmatrix}2\\1\end{bmatrix}+2\begin{bmatrix}5\\3\end{bmatrix}=\begin{bmatrix}12\\7\end{bmatrix}</script></p>
+<ol>
+<li>向量内积，矩阵第一行向量点乘向量 $x$</li>
+</ol>
+<p>​        <script type="math/tex">\begin{bmatrix}2&5\end{bmatrix}\cdot\begin{bmatrix}1&2\end{bmatrix}^T=12,\ \begin{bmatrix}1&3\end{bmatrix}\cdot\begin{bmatrix}1&2\end{bmatrix}^T=7</script></p>
+<p>从几何视角，第一种将方程组看成是列向量的线性组合，似乎更为合理．</p>
+<p>若矩阵 $A$ 是可逆的，在 $A\boldsymbol{x}=\boldsymbol{b}$ 等号两边同时乘以 $A^{-1}$，可得 $x=A^{-1}b$，我们可以说 $A$ 代表 $x \rightarrow b$ 的变换它有一个逆变换 $b \rightarrow x$．</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Zhang Qijie</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://www.zhangqijie.org/2022/09/07/MIT-18-06-Lecture1/">https://www.zhangqijie.org/2022/09/07/MIT-18-06-Lecture1/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/mit-linear-algebra-math/"># mit, linear algebra, math</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2022/07/10/mit-18-02-section1/">MIT 18.02 | Vectors & Matrices</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Zhang Qijie | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+</body>
+
+</html>
