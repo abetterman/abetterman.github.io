@@ -13,7 +13,7 @@
 
 
 
-<title>MIT 18.06 | ELIMINATION WITH MATRICES | Zhang Qijie&#39;s Blog</title>
+<title>MIT 18.06 | MULTIPLICATION AND INVERSE MATRICES | Zhang Qijie&#39;s Blog</title>
 
 
 
@@ -232,7 +232,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">MIT 18.06 | ELIMINATION WITH MATRICES</h1>
+            <h1 class="post-title">MIT 18.06 | MULTIPLICATION AND INVERSE MATRICES</h1>
             
                 <div class="post-meta">
                     
@@ -241,14 +241,14 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">September 7, 2022&nbsp;&nbsp;20:52:38</a>
+                        Date: <a href="#">September 7, 2022&nbsp;&nbsp;21:18:38</a>
                         </span>
                     
                     
                         <span class="post-category">
                     Category:
                             
-                                <a href="/categories/mit-math-linear-algebra/">mit, math, linear algebra</a>
+                                <a href="/categories/mit-linear-algebra-math/">mit, linear algebra, math</a>
                             
                         </span>
                     
@@ -258,56 +258,69 @@
 
         <div class="post-content">
             <hr>
-<p><img src="/2022/09/07/MIT-18-06-Lecture2/image-20220907205514736.png" alt="image-20220907205514736"></p>
+<p><img src="/2022/09/07/MIT-18-06-Lecture3/50ce4d8cddfa06b9c4d84f7e03a7e0e7_Unit_1_WIDE.jpg" alt></p>
 <p>这是我<strong>重修数学</strong>计划的第三门课程：MIT 18.06  Linear Algebra 的学习笔记。</p>
 <p>本课程是矩阵论和线性代数的基本科目。重点放在在其他学科中有用的主题上，包括方程组，向量空间，行列式，特征值，相似性和正定矩阵。</p>
-<p>本章主要讲解矩阵消元法，矩阵消元法最早由高斯提出来的，这个方法在解方程组时都会使用，其思想是很自然的．</p>
-<h3 id="消元法"><a href="#消元法" class="headerlink" title="消元法"></a>消元法</h3><p>有一个三元方程组：</p>
+<p>上一章讲了向量与矩阵的乘法，本章讲解两个矩阵之间的乘法并探讨逆矩阵存在的条件．</p>
+<p>最后讲解逆矩阵求解的方法．</p>
+<h3 id="Matrix-Multiplication"><a href="#Matrix-Multiplication" class="headerlink" title="Matrix Multiplication"></a>Matrix Multiplication</h3><p>矩阵乘法 $AB=C$ ，有四种不同的思考方式，如果 $A$ 是 $m \times n$ 矩阵，而 $B$ 是 $n \times p$ 矩阵，$C$ 就是 $m \times p$ 矩阵，我们用 $C_{ij}$ 表示矩阵 $C$ 的 $i$ 行 $j$ 列．<strong>矩阵相乘的条件：$A$ 的总列数必须等于 $B$ 的总行数</strong></p>
+<h4 id="Standard-row-times-column"><a href="#Standard-row-times-column" class="headerlink" title="Standard (row times column)"></a>Standard (row times column)</h4><p>描述矩阵乘法的标准方法是 $C_{ij}$ 等于矩阵 $A$ 的第 $i$ 行与矩阵 $B$ 的第 $j$ 列的点积，</p>
+<p>即：$c_{ij}=row_i\cdot column_j=\sum_{k=1}^na_{ik}b_{kj}$ </p>
 <script type="math/tex; mode=display">
-\begin{cases}x&+2y&+z&=2\\3x&+8y&+z&=12\\&4y&+z&=2\end{cases}</script><p>其对应的矩阵形式为 $A\boldsymbol{x}=\boldsymbol{b}$：</p>
+\begin{bmatrix}&&\\\cdots&row_i&\cdots\\&&\end{bmatrix}\begin{bmatrix}&\vdots&\\&col_j&\\&\vdots&\end{bmatrix}=\begin{bmatrix}&&\\&c_{ij}&\\&&\end{bmatrix}</script><h4 id="整列相乘"><a href="#整列相乘" class="headerlink" title="整列相乘"></a>整列相乘</h4><p>上一讲我们知道了如何计算矩阵乘以向量，而整列相乘同样使用线性组合的思想：</p>
+<p> $A$ 是 $m \times n$ 矩阵，$B$ 是 $n \times p$ 矩阵，则 $C$ 是 $m \times p$ 矩阵，这里可以将 $B$ 看成是 $p$ 个列向量，$AB$ 就是 $A$ 乘以 $B$ 的每个列向量，$A$ 乘以 $B$ 的第一列得到 $C$ 的第一列，$A$ 乘以 $B$ 的第二列得到 $C$ 的第二列。。。。。。</p>
 <script type="math/tex; mode=display">
-\begin{bmatrix}1&2&1\\3&8&1\\0&4&1\end{bmatrix}\begin{bmatrix}x\\y\\z\end{bmatrix}=\begin{bmatrix}2\\12\\2\end{bmatrix}</script><p>按照消元法的思路：</p>
+\begin{bmatrix}&\vdots&\\\cdots&A_{m \times n}&\cdots\\&\vdots&\\\end{bmatrix} \begin{bmatrix} \vdots&\vdots&&\vdots\\ B_{col1}&B_{col2}&\cdots&B_{colp} \\\vdots&\vdots&&\vdots\end{bmatrix} = \begin{bmatrix} \vdots&\vdots&&\vdots\\  A \times B_{col1}&A \times B_{col2}&\cdots&A \times B_{colp} \\ \vdots&\vdots&&\vdots \end{bmatrix}</script><p>上面运算中，矩阵 $A$ 乘以 $B$ 的第 $j$ 列，就得到 $C$ 矩阵的第 $j$ 列，即 <strong>$C$ 的第 $j$ 列是 $A$ 列向量以 $B$ 的第 $j$ 列作为系数所求得的线性组合</strong>：</p>
+<p>​                                                            $C_{colj}=A \times B_{colj} = b_{1j}A_{col1}+b_{2j}A_{col2}+\cdots+b_{nj}A_{coln}$ </p>
+<p>即 $C$ 的各列都是 $A$ 各列的线性组合。</p>
+<h4 id="整行相乘"><a href="#整行相乘" class="headerlink" title="整行相乘"></a>整行相乘</h4><p>同样，可以从整行的角度看矩阵乘法，前面讲的<strong>行向量乘以矩阵</strong>，可以将其用于矩阵的乘法。</p>
+<p>矩阵 $A$ 可看成 $m$ 个单独的的行向量，然后用每一个行向量乘以矩阵 $B$。$A$ 的第一个行向量乘以矩阵 $B$ 得到结果矩阵 $C$ 的第一行，$A$ 的第二个行向量乘以矩阵 $B$ 得到结果矩阵 $C$ 的第二行。。。。。。</p>
 <script type="math/tex; mode=display">
-第一步，我们希望在第二个方程中削去 x 项，操作系数矩阵  A=\begin{bmatrix}\underline1&2&1\\3&8&1\\0&4&1\end{bmatrix}，有下划线的为第一步的主元 (pivot)</script><script type="math/tex; mode=display">
-\begin{bmatrix}\underline{1}&2&1\\3&8&1\\0&4&1\end{bmatrix}\xrightarrow{row_2-3row_1}\begin{bmatrix}\underline{1}&2&1\\0&2&-2\\0&4&1\end{bmatrix}</script><p>这里先不管 $b$ 向量，先做完矩阵 $A$ 的消元，再做 $b$ 的消元（这也是 MATLAB 等工具使用的算法）</p>
+\begin{bmatrix}\cdots& A_{row1} & \cdots \\ \cdots& A_{row2} & \cdots \\ & \vdots & \\ \cdots& A_{rowm} & \cdots\end{bmatrix} \begin{bmatrix}&\vdots&\\\cdots&B_{n \times p}&\cdots\\&\vdots&\\\end{bmatrix} = \begin{bmatrix}\cdots& A_{row1} \times B & \cdots \\ \cdots& A_{row2} \times B & \cdots \\ & \vdots & \\ \cdots& A_{rowm} \times B & \cdots\end{bmatrix}</script><p>上面运算中，$A$ 的第 $i$ 个行向量乘以矩阵 $B$，就得到 $C$ 矩阵的第 $i$ 行，即 <strong>$C$ 的第 $i$ 行是 $B$ 的行向量以$A$ 的第 $i$ 行作为系数所求的的线性组合：</strong></p>
+<p>​                                                            $C_{rowi}=A_{rowi} \times B = a_{i1}B_{row1}+a_{i2}B_{row2}+\cdots+a_{in}B_{rown}$ </p>
+<p>即 $C$ 中每一行都是 $B$ 各行的线性组合，这就是按照整行的角度看矩阵乘法。</p>
+<h4 id="列乘以行"><a href="#列乘以行" class="headerlink" title="列乘以行"></a>列乘以行</h4><p>在前面的标准方法中，我们用矩阵$A$ 的一行 ($1 \times n$) 乘以 $B$ 的一列 ($n \times 1$) 得到矩阵 $C$ 的一个数。</p>
+<p>现在我们用 $A$ 的一列 ($m \times 1$) 乘以 $B$ 的一行 ($1 \times p$)，结果是一个 $m \times p$ 的矩阵，GS 教授直接给出结论：</p>
+<p><strong>$AB$ 等于 $A$ 各列与 $B$ 各行乘积之和</strong>。</p>
 <script type="math/tex; mode=display">
-第二步，在第三个方程中消去 y 项，第二行第一个非零元素成为了主元 ：\begin{bmatrix}\underline{1}&2&1\\0&\underline{2}&-2\\0&4&1\end{bmatrix}\xrightarrow{row_3-2row_2}\begin{bmatrix}\underline{1}&2&1\\0&\underline{2}&-2\\0&0&\underline{5}\end{bmatrix}</script><p>第三个方程消元后只剩下一个非零元素，就是第三个主元．做到这里，消元法就已经完成了．</p>
+\begin{split}
+\begin{bmatrix}
+\vdots&\vdots&&\vdots&\\A_{col1}&A_{col2}&\cdots&A_{coln}\\\vdots&\vdots&&\vdots&\end{bmatrix}\begin{bmatrix}&\cdots&B_{row1}&\cdots&\\&\cdots&B_{row2}  &\cdots\\&&\vdots&\\&\cdots&B_{rown}&\cdots&\end{bmatrix} \\ 
+&=A_{col1}B_{row1}+A_{col2}B_{row2} &+\cdots+A_{coln}B_{rown} \\ &=\sum_{i=1}^{i=n}A_{col_i}B_{row_i}
+\end{split}</script><h4 id="分块乘法"><a href="#分块乘法" class="headerlink" title="分块乘法"></a>分块乘法</h4><p>将矩阵切成块，对块进行乘法运算。$AB=C$，将 $A,B$ 都切成 4 块，如下：</p>
 <script type="math/tex; mode=display">
-第三步，就是回代（back substitution），在 A 矩阵后面加上 b 向量写成增广矩阵（augmented matrix）的形式：\\
-\left[\begin{array}{c|c}A&b\end{array}\right]=\left[\begin{array}{ccc|c}1&2&1&2\\3&8&1&12\\0&4&1&2\end{array}\right]\to\left[\begin{array}{ccc|c}1&2&1&2\\0&2&-2&6\\0&4&1&2\end{array}\right]\to\left[\begin{array}{ccc|c}1&2&1&2\\0&2&-2&6\\0&0&5&-10\end{array}\right]</script><p>不难看出，$z$ 的解已经出现了，将 $z$ 的解代入第二个方程即可求出 $y$，再将 $z,y$ 分别代入第一个方程即可求出 $x$.</p>
-<h4 id="消元法失效"><a href="#消元法失效" class="headerlink" title="消元法失效"></a>消元法失效</h4><p>首先，主元不能为零；</p>
-<p>其次，如果在消元时遇到主元位置为零，则需要交换行，使主元不为零；</p>
-<p>最后提一下，如果我们把第三个方程 $z$ 前的系数成 $−4$，会导致第二步消元时最后一行全部为零，则第三个主元就不存在了，至此消元不能继续进行了，这就是下一讲中涉及的<em>不可逆</em>情况。</p>
-<h3 id="消元矩阵"><a href="#消元矩阵" class="headerlink" title="消元矩阵"></a>消元矩阵</h3><p>上一讲学过矩阵乘以向量，可以表示成列向量的线性组合，比如：</p>
+\begin{split}
+\left[\begin{array}{c|c}A_1&A_2\\\hline A_3&A_4\end{array}\right]\left[\begin{array}{c|c}B_1&B_2\\\hline B_3&B_4\end{array}\right]=\left[\begin{array}{c|c}A_1B_1+A_2B_3&A_1B_2+A_2B_4\\\hline A_3B_1+A_4B_3&A_3B_2+A_4B_4\end{array}\right]
+\end{split}</script><p> 上面展示了分块计算的规律，其实可以将分块看作一个数字，然后就像普通矩阵一样去做乘法。要注意，在分块时要保证分块后，相应的块如 $A_1B_1$, $A_2B_3$ 等确实能够做矩阵乘法。</p>
+<h3 id="Inverses-Square-Matrices"><a href="#Inverses-Square-Matrices" class="headerlink" title="Inverses (Square Matrices)"></a>Inverses (Square Matrices)</h3><p>方阵 $A$ 的逆，可能存在，并不是必然存在．如果其可逆，则存在一个矩阵 $A^{-1}$ （称为 $A$ 的逆矩阵）</p>
+<p>$AA^{-1}=I$  （逆矩阵在右边，称为右逆矩阵），$A^{-1}A=I$ （逆矩阵在左边，称为左逆矩阵），对于方阵，左逆与右逆是相等的：$A^{-1}A=I=AA^{-1}$ ，对于长方形矩阵，左逆和右逆是不相等的．</p>
+<p>有逆的矩阵，被称为<strong>可逆或非奇异矩阵</strong>．奇异矩阵为何不可逆？比如下面这个矩阵：</p>
 <script type="math/tex; mode=display">
-\Bigg[v_1\ v_2\ v_3\Bigg]\begin{bmatrix}3\\4\\5\end{bmatrix}=3v_1+4v_2+5v_3</script><p>矩阵乘以向量，也可以表示成矩阵行向量的线性组合，比如：</p>
+A=\begin{bmatrix}1&3\\2&6\end{bmatrix}</script><p>可以看出矩阵 $A$ 的行列式为 $0$ ，所以不可逆．</p>
+<p>从前面矩阵乘法的说明中，比如整列相乘，矩阵 $A$ 乘以某一个矩阵 $B$ 得到单位矩阵 $I$，$AB$ 应该是 $A$ 的线性组合，</p>
 <script type="math/tex; mode=display">
-\begin{bmatrix}1&2&7\end{bmatrix}\begin{bmatrix}&row_1&\\&row_2\\&row_3&\end{bmatrix}=1row_1+2row_2+7row_3</script><p>前面的消元法所做的行操作 (row operation)，就可以写成行向量乘以矩阵的形式：</p>
-<ul>
-<li>消元法第一步将第二行改成 $row2−3row1$，其余两行不变，则有</li>
-</ul>
+然而，单位矩阵\ I\ 的第一列是:\begin{bmatrix}1\\0\end{bmatrix}\ 而\ A\ 中两列 \begin {bmatrix}1\\2\end {bmatrix},\begin {bmatrix}3\\6\end {bmatrix} \ 共线，无法线性组合出单位矩阵 \ I</script><p>另一种解释：如果存在非零向量 $x$ 使得 $Ax=0$，则矩阵 $A$ 不可逆．什么样的向量能使 $Ax=0$ 呢？</p>
 <script type="math/tex; mode=display">
-\begin{bmatrix}1&0&0\\-3&1&0\\0&0&1\end{bmatrix}\begin{bmatrix}1&2&1\\3&8&1\\0&4&1\end{bmatrix}=\begin{bmatrix}1&2&1\\0&2&-2\\0&4&1\end{bmatrix}</script><p>​        左边第一个矩阵即为消元矩阵，这里记作 $E_{21}$ （将第二行第一个元素变为 0），另外如果消元矩阵是单位矩阵 $I$，则原矩阵不会有任何改变．</p>
+Ax = \begin{bmatrix}1&3\\2&6\end{bmatrix}\begin{bmatrix}x\end{bmatrix}=\begin{bmatrix}0\\0\end{bmatrix}</script><script type="math/tex; mode=display">
+求得非零向量 \ x= \begin{bmatrix}3\\-1\end{bmatrix}</script><p>也可用反证法证明：如果 $Ax=0$，且 $A^{-1}$ 存在，则 $A^{-1}Ax=A^{-1}0$，那么 $x$ 必须是 $0$．</p>
+<p>什么样的矩阵有逆？ </p>
 <script type="math/tex; mode=display">
-I=\begin{bmatrix}1&0&0\\0&1&0\\0&0&1\end{bmatrix}</script><ul>
-<li>接下来，求消元矩阵 $E_{32}$，将第三行第二个元素变为零：</li>
-</ul>
+A=\begin{bmatrix}1&3\\2&7\end{bmatrix}</script><p>求 $A^{-1}$</p>
 <script type="math/tex; mode=display">
-\begin{bmatrix}1&0&0\\0&1&0\\0&-2&1\end{bmatrix}\begin{bmatrix}1&2&1\\0&2&-2\\0&4&1\end{bmatrix}=\begin{bmatrix}1&2&1\\0&2&-2\\0&0&5\end{bmatrix}</script><p>这就是消元所使用的两个初等矩阵 (elementary matrix).</p>
-<ul>
-<li>将以上两步综合起来，即 $E_{32}(E_{21}A)= U$，就是说若要从 $A$ 得到 $U$，只需 $E_{32}E_{21}A$ 即可．注意矩阵乘法不满足交换律，但满足结合律，而这个结合律的巧妙使用对于很多定理的证明很重要．</li>
-</ul>
-<p>下面再介绍矩阵的置换矩阵 (permutation matrix)，</p>
-<p>交换矩阵的两行：</p>
+\begin{bmatrix}1&3\\2&7\end{bmatrix}\begin{bmatrix}a&b\\c&d\end{bmatrix}=\begin{bmatrix}1&0\\0&1\end{bmatrix}</script><p>使用列向量线性组合的思想，$A^{-1}$ 的第一列满足下面方程：</p>
 <script type="math/tex; mode=display">
-\begin{bmatrix}0&1\\1&0\end{bmatrix}\begin{bmatrix}a&b\\c&d\end{bmatrix}=\begin{bmatrix}c&d\\a&b\end{bmatrix}</script><p>交换矩阵的两列：</p>
+\begin{bmatrix}1&3\\2&7\end{bmatrix}\begin{bmatrix}a\\c\end{bmatrix}=\begin{bmatrix}1\\0\end{bmatrix}</script><p>同样， $A^{-1}$ 的第二列满足下面方程：</p>
 <script type="math/tex; mode=display">
-\begin{bmatrix}a&b\\c&d\end{bmatrix}\begin{bmatrix}0&1\\1&0\end{bmatrix}=\begin{bmatrix}b&a\\d&c\end{bmatrix}</script><p>矩阵 $A$ 能通过运算得到矩阵 $U$，那么矩阵 $U$ 能通过运算变回矩阵 $A$ 吗？ 而这要看矩阵是否可逆了！</p>
-<h3 id="invertible"><a href="#invertible" class="headerlink" title="invertible"></a>invertible</h3><p>以前面的 $E_{21}$ 为例：</p>
+\begin{bmatrix}1&3\\2&7\end{bmatrix}\begin{bmatrix}b\\d\end{bmatrix}=\begin{bmatrix}0\\1\end{bmatrix}</script><p>可见，上面求逆等同于解两个方程组，一次求解一个方程组．</p>
+<h3 id="Gauss-Jordan"><a href="#Gauss-Jordan" class="headerlink" title="Gauss-Jordan"></a>Gauss-Jordan</h3><p>Gauss-Jordan 方法能一次处理所有方程组．以上面的矩阵 $A$ 为例，要求解的方程组为：</p>
 <script type="math/tex; mode=display">
-\Bigg[\quad ?\quad \Bigg]\begin{bmatrix}1&0&0\\-3&1&0\\0&0&1\end{bmatrix}=\begin{bmatrix}1&0&0\\0&1&0\\0&0&1\end{bmatrix}</script><p>什么矩阵可以取消这次行变换？这次变换是从第二行中减去三倍的第一行，那么其逆变换就是给第二行加上三倍的第一行，所以逆矩阵就是：</p>
+\begin{cases}\begin{bmatrix}1&3\\2&7\end{bmatrix}\begin{bmatrix}a\\b\end{bmatrix}=\begin{bmatrix}1\\0\end{bmatrix}\\\begin{bmatrix}1&3\\2&7\end{bmatrix}\begin{bmatrix}c\\d\end{bmatrix}=\begin{bmatrix}0\\1\end{bmatrix}\end{cases}</script><p>要同时解上面的两组方程组，需要构造矩阵，接下来用消元法：</p>
 <script type="math/tex; mode=display">
-\begin{bmatrix}1&0&0\\3&1&0\\0&0&1\end{bmatrix}</script><p>$E$ 的逆矩阵记作 $E^{-1}$，有 $E^{-1}E = I$．</p>
+\left[\begin{array}{c|c}A&I\end{array}\right] = \left[\begin{array}{cc|cc}1&3&1&0\\2&7&0&1\end{array}\right]</script><script type="math/tex; mode=display">
+\left[\begin{array}{cc|cc}1&3&1&0\\2&7&0&1\end{array}\right]\xrightarrow{row_2-2row_1}\left[\begin{array}{cc|cc}1&3&1&0\\0&1&-2&1\end{array}\right]</script><p>Gauss 消元做到这里就不管了(对于单个方程组来说，这样就可以通过回代来求出解)，Jordan 则继续往下消元，消去第一行后面的 $3$，使其为单位矩阵（从而能够同时解多个方程组)：</p>
+<script type="math/tex; mode=display">
+\left[\begin{array}{cc|cc}1&3&1&0\\0&1&-2&1\end{array}\right]\xrightarrow{row_1-3row_2}\left[\begin{array}{cc|cc}1&0&7&-3\\0&1&-2&1\end{array}\right]</script><p>于是，我们就将矩阵从 $\left[\begin{array}{c|c}A&amp;I\end{array}\right]$ 变为 $\left[\begin{array}{c|c}I&amp;A^{-1}\end{array}\right]$  </p>
+<p>Gauss-Jordan 方法的本质是使用消元矩阵 $E$ 对 $A$ 进行操作，$E\left[\begin{array}{c|c}A&amp;I\end{array}\right]$，利用一步步消元得到 $EA=I$，进而得到 $\left[\begin{array}{c|c}I&amp;A^{-1}\end{array}\right]$ ，这个消元矩阵 $E$ 就是 $A^{-1}$ .</p>
 
         </div>
 
@@ -322,7 +335,7 @@ I=\begin{bmatrix}1&0&0\\0&1&0\\0&0&1\end{bmatrix}</script><ul>
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="https://www.zhangqijie.org/2022/09/07/MIT-18-06-Lecture2/">https://www.zhangqijie.org/2022/09/07/MIT-18-06-Lecture2/</a></span>
+                        <span><a href="https://www.zhangqijie.org/2022/09/07/MIT-18-06-Lecture3/">https://www.zhangqijie.org/2022/09/07/MIT-18-06-Lecture3/</a></span>
                     </p>
                 
                 
@@ -346,7 +359,7 @@ I=\begin{bmatrix}1&0&0\\0&1&0\\0&0&1\end{bmatrix}</script><ul>
                 <span class="tag">
                     
                     
-                        <a href="/tags/mit-math-linear-algebra/"># mit, math, linear algebra</a>
+                        <a href="/tags/mit-linear-algebra-math/"># mit, linear algebra, math</a>
                     
                         
                 </span>
@@ -359,10 +372,8 @@ I=\begin{bmatrix}1&0&0\\0&1&0\\0&0&1\end{bmatrix}</script><ul>
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2022/09/07/MIT-18-06-Lecture3/">MIT 18.06 | MULTIPLICATION AND INVERSE MATRICES</a>
             
-            
-            <a class="next" rel="next" href="/2022/09/07/MIT-18-06-Lecture1/">MIT 18.06 | THE GEOMETRY OF LINEAR EQUATIONS</a>
+            <a class="next" rel="next" href="/2022/09/07/MIT-18-06-Lecture2/">MIT 18.06 | ELIMINATION WITH MATRICES</a>
             
         </section>
 
